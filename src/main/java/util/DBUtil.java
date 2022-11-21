@@ -1,11 +1,15 @@
 package util;
 
 import java.sql.*;
-
+	// db 연결 메서드 분리
 public class DBUtil {
 	public Connection getConnection() throws Exception {
-		Class.forName("org.mariadb.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook", "root", "java1234");
+		String driver = "org.mariadb.jdbc.Driver"; 
+		String dbUrl = "jdbc:mariadb://127.0.0.1:3306/cashbook";
+		String dbUser = "root";
+		String dbPw = "java1234";
+		Class.forName(driver);
+		Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPw);
 		return conn;
 	}
 }

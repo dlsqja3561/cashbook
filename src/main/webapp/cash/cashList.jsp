@@ -56,9 +56,6 @@
 %>
 
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
