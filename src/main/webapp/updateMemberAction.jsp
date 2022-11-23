@@ -30,9 +30,33 @@
 	System.out.println("newPw"+newPw);
 	System.out.println("newPwCk"+newPwCk);
 	
-	
-	
 	MemberDao memberDao = new MemberDao();
+	
+	// 현재 비밀번호 확인
+	int checkPw = memberDao.updatePwCk(memberId, memberPw);
+	if(checkPw == 1) {// 현재 비밀번호 O
+		System.out.println("현재pw일치");
+		if(newPw.equals(newPwCk)) { // 변경 비밀번호 O
+			System.out.println("newPw일치");
+		} else { // 변경 비밀번호 X
+			response.sendRedirect(request.getContextPath()+"/updateMemberForm.jsp");
+			return;
+		}
+	} else { // 현재 비밀번호 X
+		System.out.println("현재pw다름");
+		response.sendRedirect(request.getContextPath()+"/updateMemberForm.jsp");
+		return;
+	}
+	
+	// 비밀번호 변경
+	int updatePw = memberDao.updatePw(memberId, newPw);
+	if(updatePw == 1) { // 변경성공
+		System.out.println("변경성공");
+	} else { // 변경실패
+		System.out.println("변경실패");
+	}
+	
+	
 
 	response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 %>

@@ -97,9 +97,9 @@ public class MemberDao {
 
 		int resultUpdatePw = stmt.executeUpdate();
 		if(resultUpdatePw == 1) {
-			System.out.println("변경 성공");
+			System.out.println("변경 성공---");
 		} else {
-			System.out.println("변경 실패");
+			System.out.println("변경 실패---");
 		}
 		stmt.close();
 		conn.close();
