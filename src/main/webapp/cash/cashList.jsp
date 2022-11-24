@@ -78,6 +78,13 @@
 		<span><%=loginMember.getMemberId()%>(<%=loginMember.getMemberName()%>)</span>님 반갑습니다.
 		<a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
 		<a href="<%=request.getContextPath()%>/updateMemberForm.jsp">내정보수정</a>
+		<%
+			if(loginMember.getMemberLevel() > 0) {
+		%>
+				<a href="<%=request.getContextPath()%>/admin/adminMain.jsp">관리자 페이지</a>
+		<%
+			}
+		%>
 	</div>
 	
 	<div>

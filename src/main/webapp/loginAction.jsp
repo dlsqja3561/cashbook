@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLEncoder"%>
 <%@ page import = "dao.*" %>
 <%@ page import = "vo.*" %>
 <%
@@ -7,7 +8,8 @@
 		|| request.getParameter("memberPw")==null 
 		|| request.getParameter("memberId").equals("") 
 		|| request.getParameter("memberPw").equals("")){
-		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
+		String msg1 = URLEncoder.encode("정보를 입력해 주세요.", "utf-8"); // 입력X msg1 loginForm
+		response.sendRedirect(request.getContextPath()+"/loginForm.jsp?msg1="+msg1);
 		return;
 	}
 

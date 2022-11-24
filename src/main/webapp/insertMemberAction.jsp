@@ -3,6 +3,7 @@
 <%@ page import = "dao.*" %>
 <%@ page import = "vo.*" %>
 <%
+	//1. Controller
 	//한글처리 utf-8 인코딩
 	request.setCharacterEncoding("utf-8");
 	// 로그인이 되어 있을때는 접근불가
@@ -10,7 +11,7 @@
 		response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
 		return;
 	}
-	// 1.
+
 	String memberId = request.getParameter("memberId");
 	String memberPw = request.getParameter("memberPw");
 	String memberName = request.getParameter("memberName");
@@ -22,28 +23,34 @@
 	if(memberId == null || memberId.equals("")
 		|| memberPw == null || memberPw.equals("")
 		|| memberName == null || memberName.equals("")) {
-		String msg = URLEncoder.encode("정보를 입력해 주세요.", "utf-8");
+		String msg = URLEncoder.encode("정보를 입력해 주세요.", "utf-8"); // 입력X msg insertMemberForm
 		response.sendRedirect(request.getContextPath()+"/insertMemberForm.jsp?msg="+msg);
 		return;
 	}
+	// 회원가입 값
+	Member member = new Member();
+	member.setMemberId(memberId);
+	member.setMemberPw(memberPw);
+	member.setMemberName(memberName);
 	
-	Member paramMember = new Member();
-	paramMember.setMemberId(memberId);
-	paramMember.setMemberPw(memberPw);
-	paramMember.setMemberName(memberName);
 	
-	
-	// 분리된 M(모델)을 호출
+	// 2. Model 호출
 	MemberDao memberDao = new MemberDao();
-	int resultUpdate = memberDao.insertMember(paramMember);
-	if(resultUpdate == 1) {
-		System.out.println("성공----");
-	} else {
-		System.out.println("실패----");
+
+	// Id 중복 확인
+	if(memberDao.memberIdCk(memberId)) {
+		System.out.println("중복ID----");
+		String msg = URLEncoder.encode("중복된 아이디입니다.", "utf-8"); // 중복아이디 msg insertMemberForm
+		response.sendRedirect(request.getContextPath()+"/insertMemberForm.jsp?msg="+msg);
+		return;
 	}
+	// 회원가입
+	int row = memberDao.insertMember(member);
+	// 회원가입 성공 msg loginForm
+	System.out.println(row + "<-- insertMemberAction.jsp row 성공---- ");
+	String msg = URLEncoder.encode("회원가입 성공.", "utf-8");
+	response.sendRedirect(request.getContextPath()+"/loginForm.jsp?msg="+msg);
 
-
-	response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 
 %>
 
