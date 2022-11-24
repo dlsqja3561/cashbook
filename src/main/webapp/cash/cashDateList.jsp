@@ -11,6 +11,7 @@
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
 	}
+	String msg = request.getParameter("msg");
 
 	//seesion에 저장된 멤버(현재 로그인 사용자)
 	Member loginMember = (Member)session.getAttribute("loginMember");
@@ -44,7 +45,6 @@
 <body>
 	<!-- cash 입력 폼 -->
 	<form action="<%=request.getContextPath()%>/cash/insertCashAction.jsp" method="post">
-		<input type="hidden" name="memberId" value="<%=loginMember.getMemberId()%>">
 		<input type="hidden" name="year" value="<%=year%>">
 		<input type="hidden" name="month" value="<%=month%>">
 		<input type="hidden" name="date" value="<%=date%>">
@@ -106,8 +106,8 @@
 					<td><%=m.get("categoryName")%></td>
 					<td><%=m.get("cashPrice")%></td>
 					<td><%=m.get("cashMemo")%></td>
-					<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo="+<%=m.get("cashNo")%>>수정</a></td>
-					<td><a href="<%=request.getContextPath()%>/cash/deleteCash.jsp?cashNo="+<%=m.get("cashNo")%>>삭제</a></td>
+					<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo="<%=m.get("cashNo")%>>수정</a></td>
+					<td><a href="<%=request.getContextPath()%>/cash/deleteCash.jsp?cashNo="<%=m.get("cashNo")%>>삭제</a></td>
 				</tr>
 		<%
 			}
