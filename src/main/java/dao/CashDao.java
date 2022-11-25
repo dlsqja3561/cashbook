@@ -146,13 +146,29 @@ public class CashDao {
 	}
 	
 	// 호출 : updateCashAction.jsp
-	
 	public int updateCash(Cash upCash) throws Exception {
 		int row = 0;
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
 		String sql = "UPDATE cash"
 					+ " SET cash_price = ? cash_memo";
+		return row;
+	}
+	
+	// 호출 : deleteCashAction.jsp
+	public int deleteCash(int cashNo) throws Exception {
+		int row = 0;
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "DELETE FROM cash WHERE cash_no = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, cashNo);
+		
+		row = stmt.executeUpdate();
+		if(row == 1) {
+			System.out.println("삭제 성공---");
+		}
+		
 		return row;
 	}
 }
