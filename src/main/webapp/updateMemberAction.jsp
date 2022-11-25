@@ -32,10 +32,11 @@
 	System.out.println("newPw"+newPw);
 	System.out.println("newPwCk"+newPwCk);
 	
+	// 2. Model 호출
 	MemberDao memberDao = new MemberDao();
 	
 	// 현재 비밀번호 확인
-	int row = memberDao.updatePwCk(memberId, memberPw);
+	int row = memberDao.pwCk(memberId, memberPw);
 	if(row == 1) {// 현재 비밀번호 O
 		System.out.println("현재pw일치");
 		if(newPw.equals(newPwCk)) { // 변경 비밀번호 O

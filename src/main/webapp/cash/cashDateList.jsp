@@ -49,6 +49,14 @@
 		<input type="hidden" name="month" value="<%=month%>">
 		<input type="hidden" name="date" value="<%=date%>">
 		<table border="1">
+			<%
+				// 정보입력 없으면, id 중복시 msg1 출력
+				if(msg != null){
+			%>
+					 <%=msg%>
+			<%
+				}
+			%>
 			<tr>
 				<td>categoryNo</td>
 				<td>

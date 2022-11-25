@@ -144,4 +144,15 @@ public class CashDao {
 		dbUtil.close(null, stmt, conn);
 		return row;
 	}
+	
+	// 호출 : updateCashAction.jsp
+	
+	public int updateCash(Cash upCash) throws Exception {
+		int row = 0;
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "UPDATE cash"
+					+ " SET cash_price = ? cash_memo";
+		return row;
+	}
 }

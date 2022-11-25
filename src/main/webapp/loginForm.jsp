@@ -8,7 +8,7 @@
 		response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
 		return;
 	}
-	//회원가입 완료, 실패 msg 출력
+	//회원가입 완료, 실패, 회원탈퇴 msg 출력
 	if(request.getParameter("msg") != null) {
 		String msg = request.getParameter("msg");
 		out.println("<script>alert('"+msg+"');</script>");

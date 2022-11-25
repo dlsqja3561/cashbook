@@ -3,11 +3,39 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import util.DBUtil;
 import vo.Member;
 
 public class MemberDao {
+	
+	// 관리자 : 멤버레벨수정
+	public int updateMemberLevel(Member member) throws Exception {
+	
+		return 0;
+	}
+	
+	// 관리자 : 멤버수
+	public int selectMemberCount() throws Exception {
+		
+		return  0;
+	}
+	
+	// 관리자 : 멤버 리스트
+	public ArrayList<Member> selectMemberListByPage(int beginRow, int rowPerPage) throws Exception {
+		/*
+		 ORDER BY createdate DESC
+		 */
+		return  null;
+	}
+	
+	// 관리자 멤버 강퇴
+	public int deleteMemberByAdmin(Member member) throws Exception {
+		
+		return 0;
+	}
+	
 	//로그인
 	public Member login(Member paramMember) throws Exception {
 		Member resultMember = null;
@@ -71,16 +99,14 @@ public class MemberDao {
 		row = stmt.executeUpdate();
 		if(row == 1) {
 			System.out.println("회원가입 성공");
-		} else {
-			System.out.println("회원가입 실패");
-		}
+		} 
 		
 		dbUtil.close(null, stmt, conn);
 		return row;
 	}
 	
 	// 비밀번호 확인
-	public int updatePwCk(String memberId, String memberPw) throws Exception {
+	public int pwCk(String memberId, String memberPw) throws Exception {
 		int row = 0;
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
@@ -92,10 +118,9 @@ public class MemberDao {
 		ResultSet rs = stmt.executeQuery();
 		if(rs.next()) {
 			row = 1;
+			System.out.println("비밀번호 일치---");
 		}
-		rs.close();
-		stmt.close();
-		conn.close();
+		dbUtil.close(rs, stmt, conn);
 		return row;
 	}
 	// 비밀번호 수정 
@@ -113,11 +138,29 @@ public class MemberDao {
 		row = stmt.executeUpdate();
 		if(row == 1) {
 			System.out.println("변경 성공---");
-		} else {
-			System.out.println("변경 실패---");
-		}
-		stmt.close();
-		conn.close();
+		} 
+
+		dbUtil.close(null, stmt, conn);
 		return row;
 	}
+	
+	// 회원탈퇴
+	public int deleteMember(Member member) throws Exception {
+		int row = 0;
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "DELETE FROM member WHERE member_id = ? AND member_pw = PASSWORD(?)";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, member.getMemberId());
+		stmt.setString(2, member.getMemberPw());
+		
+		row = stmt.executeUpdate();
+		if(row == 1) {
+			System.out.println("탈퇴 성공---");
+		} 
+
+		dbUtil.close(null, stmt, conn);
+		return row;
+	}
+	
 }

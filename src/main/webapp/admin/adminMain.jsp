@@ -2,6 +2,7 @@
 <%@ page import="vo.*"%>
 <%
 	// Controller
+	// 로그인 안되어 있거나 level 0인 멤버
 	Member loginMember = (Member)session.getAttribute("loginMember");
 	if(loginMember == null || loginMember.getMemberLevel() < 1) {
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
@@ -26,9 +27,10 @@
 </head>
 <body>
 	<ul>
-		<li><a href="">공지관리</a></li>
-		<li><a href="">카테고리관리</a></li>
-		<li><a href="">맴버관리(목록, 레벨수정, 강제탈퇴)</a></li>
+		<li><a href="<%=request.getContextPath()%>/admin/noticeList.jsp">공지관리</a></li>
+		<li><a href="<%=request.getContextPath()%>/admin/categoryList.jsp">카테고리관리</a></li>
+		<li><a href="<%=request.getContextPath()%>/admin/memberList.jsp">맴버관리(목록, 레벨수정, 강제탈퇴)</a></li>
 	</ul>
+	<!-- adminMain contents ... -->
 </body>
 </html>
