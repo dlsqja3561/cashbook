@@ -12,8 +12,23 @@ public class MemberDao {
 	
 	// 관리자 : 멤버레벨수정
 	public int updateMemberLevel(Member member) throws Exception {
-	
-		return 0;
+		int row = 0;
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "UPDATE member SET member_level = ? WHERE member_no = ?";
+
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, member.getMemberLevel());
+		stmt.setInt(2, member.getMemberNo());
+		
+
+		row = stmt.executeUpdate();
+		if(row == 1) {
+			System.out.println("멤버레벨 변경성공---");
+		} 
+
+		dbUtil.close(null, stmt, conn);
+		return row;
 	}
 	
 	// 관리자 : 멤버수 (전체 count)
