@@ -146,12 +146,28 @@ public class CashDao {
 	}
 	
 	// 호출 : updateCashAction.jsp
-	public int updateCash(Cash upCash) throws Exception {
+	public int updateCash(Cash cash) throws Exception {
 		int row = 0;
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
 		String sql = "UPDATE cash"
-					+ " SET cash_price = ? cash_memo";
+					+ " SET category_no = ?, cash_date = ?, cash_price = ?, cash_memo = ?"
+					+ " WHERE member_id = ? AND cash_no = ?";
+		
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, cash.getCategoryNo());
+		stmt.setString(2, cash.getCashDate());
+		stmt.setLong(3, cash.getCashPrice());
+		stmt.setString(4, cash.getCashMemo());
+		stmt.setString(5, cash.getMemberId());
+		stmt.setInt(6, cash.getCashNo());
+		
+		row = stmt.executeUpdate();
+		if(row == 1) {
+			System.out.println("수정 성공---");
+		}
+		
+		dbUtil.close(null, stmt, conn);
 		return row;
 	}
 	

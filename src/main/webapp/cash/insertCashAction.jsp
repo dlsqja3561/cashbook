@@ -18,13 +18,13 @@
 	System.out.println(date+ "date");
 	
 	// 입력값 없으면 msg출력 return
-		if(request.getParameter("cashPrice") == null || request.getParameter("cashPrice").equals("")
-			|| request.getParameter("cashMemo") == null || request.getParameter("cashMemo").equals("")
-			|| request.getParameter("cashDate") == null || request.getParameter("cashDate").equals("")) {
-			String msg = URLEncoder.encode("정보를 입력해 주세요.", "utf-8"); // 입력X msg insertCashForm
-			response.sendRedirect(request.getContextPath()+"/cash/cashDateList.jsp?msg="+msg+"&year="+year+"&month="+month+"&date="+date);
-			return;
-		}
+	if(request.getParameter("cashPrice") == null || request.getParameter("cashPrice").equals("")
+		|| request.getParameter("cashMemo") == null || request.getParameter("cashMemo").equals("")
+		|| request.getParameter("cashDate") == null || request.getParameter("cashDate").equals("")) {
+		String msg = URLEncoder.encode("정보를 입력해 주세요.", "utf-8"); // 입력X msg insertCashForm
+		response.sendRedirect(request.getContextPath()+"/cash/cashDateList.jsp?msg="+msg+"&year="+year+"&month="+month+"&date="+date);
+		return;
+	}
 
 	//seesion에 저장된 멤버(현재 로그인 사용자)
 	Member loginMember = (Member)session.getAttribute("loginMember");
@@ -43,14 +43,6 @@
 	System.out.println(cashPrice+ "cashPrice");
 	System.out.println(cashMemo+ "cashMemo");
 	
-	// 입력값 없으면 msg출력 return
-	if(cashPrice == null || cashPrice.equals("")
-		|| cashMemo == null || cashMemo.equals("")
-		|| cashDate == null || cashDate.equals("")) {
-		String msg = URLEncoder.encode("정보를 입력해 주세요.", "utf-8"); // 입력X msg insertCashForm
-		response.sendRedirect(request.getContextPath()+"/cashDateList.jsp?msg="+msg+"&year="+year+"&month="+month+"&date="+date);
-		return;
-	}
 	
 	Cash cash = new Cash();
 	cash.setCategoryNo(categoryNo);

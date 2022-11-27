@@ -66,7 +66,7 @@
 							for(Category c : categoryList) {
 						%>
 								<option value="<%=c.getCategoryNo()%>">
-									<%=c.getCategoryKind()%> <%=c.getCategoryName()%>
+									<%=c.getCategoryKind()%> / <%=c.getCategoryName()%>
 								</option>
 						<%
 							}
@@ -114,7 +114,7 @@
 					<td><%=m.get("categoryName")%></td>
 					<td><%=m.get("cashPrice")%></td>
 					<td><%=m.get("cashMemo")%></td>
-					<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=m.get("cashNo")%>&year=<%=year%>&month=<%=month%>&date=<%=date%>">수정</a></td>
+					<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=m.get("cashNo")%>&year=<%=year%>&month=<%=month%>&date=<%=date%>&categoryKind=<%=m.get("categoryKind")%>&categoryName=<%=m.get("categoryName")%>&cashPrice=<%=m.get("cashPrice")%>&cashMemo=<%=m.get("cashMemo")%>">수정</a></td>
 					<td><a href="<%=request.getContextPath()%>/cash/deleteCash.jsp?cashNo=<%=m.get("cashNo")%>&year=<%=year%>&month=<%=month%>&date=<%=date%>">삭제</a></td>
 				</tr>
 		<%
