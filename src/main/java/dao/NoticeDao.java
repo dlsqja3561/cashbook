@@ -27,7 +27,7 @@ public class NoticeDao {
 	
 	
 	// 마지막 페이지를 구하려면 전체row수 필요
-	public int selectNoitceCount() throws Exception {
+	public int selectNoticeCount() throws Exception {
 		int count = 0;
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();

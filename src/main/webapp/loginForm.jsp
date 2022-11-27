@@ -27,7 +27,7 @@
 	NoticeDao noticeDao = new NoticeDao();
 
 	// lastPage
-	int count = noticeDao.selectNoitceCount();
+	int count = noticeDao.selectNoticeCount();
 	int lastPage = count / rowPerPage;
 	if(count % rowPerPage != 0) {
 		lastPage+=1;
