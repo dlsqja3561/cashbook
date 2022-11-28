@@ -12,19 +12,19 @@
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
 	}
-	
-	// 입력값 없으면 updateCategoryForm 으로
-	if(request.getParameter("categoryName")==null 
-		|| request.getParameter("categoryName").equals("")){
-		String msg = URLEncoder.encode("정보를 입력해 주세요.", "utf-8"); // 입력X msg updateCategoryForm
-		response.sendRedirect(request.getContextPath()+"/updateCategoryForm.jsp?msg="+msg);
-		return;
-	}
-
 	int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
 	String categoryName = request.getParameter("categoryName");
 	System.out.println("categoryNo"+categoryNo);
 	System.out.println("categoryName"+categoryName);
+	
+	// 입력값 없으면 updateCategoryForm 으로
+	if(categoryName == null 
+		|| categoryName.equals("")){
+		String msg = URLEncoder.encode("정보를 입력해 주세요.", "utf-8"); // 입력X msg updateCategoryForm
+		response.sendRedirect(request.getContextPath()+"/admin/updateCategoryForm.jsp?msg="+msg+"&categoryNo="+categoryNo);
+		return;
+	}
+
 	
 	Category category = new Category();
 	category.setCategoryNo(categoryNo);

@@ -14,6 +14,13 @@
 	int memberLevel = Integer.parseInt(request.getParameter("memberLevel"));
 	System.out.println("memberNo"+memberNo);
 	System.out.println("memberLevel"+memberLevel);
+	
+	// 입력값 없으면 updateCategoryForm 으로
+	if(memberLevel < 0 || memberLevel >= 2){
+		String msg = URLEncoder.encode("잘못된 레벨 정보입니다.", "utf-8"); // msg updateLevelForm
+		response.sendRedirect(request.getContextPath()+"/admin/updateLevelForm.jsp?msg="+msg+"&memberNo="+memberNo);
+		return;
+	}
 
 	Member member = new Member();
 	member.setMemberNo(memberNo);
@@ -22,4 +29,6 @@
 	// 2. Model 호출
 	MemberDao memberDao = new MemberDao();
 	int row = memberDao.updateMemberLevel(member);
+	System.out.println("레벨 변경성공");
+	response.sendRedirect(request.getContextPath()+"/admin/memberList.jsp");
 %>

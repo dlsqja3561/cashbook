@@ -41,7 +41,7 @@
 	}
 	
 	// 회원탈퇴
-	row = memberDao.deleteMember(member);
+	memberDao.deleteMember(member);
 	System.out.println("회원탈퇴 완료");
 	session.invalidate(); // 세션 초기화
 	msg = URLEncoder.encode("회원탈퇴 완료", "utf-8");

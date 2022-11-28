@@ -16,7 +16,7 @@ public class MemberDao {
 		int row = 0;
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
-		String sql = "UPDATE member SET member_level = ? WHERE member_no = ?";
+		String sql = "UPDATE member SET member_level = ?, updatedate = CURDATE() WHERE member_no = ?";
 
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, member.getMemberLevel());
@@ -32,6 +32,25 @@ public class MemberDao {
 		return row;
 	}
 	// admin -> updateMemberForm.jsp
+	public Member selectMemberOne(int memberNo) throws Exception {
+		Member member = null;
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "SELECT member_no memberNo, member_level memberLevel"
+					+ " FROM member"
+					+ " WHERE member_no = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, memberNo);
+		ResultSet rs = stmt.executeQuery();
+		if(rs.next()) {
+			member = new Member();
+			member.setMemberNo(rs.getInt("memberNo"));
+			member.setMemberLevel(rs.getInt("memberLevel"));
+		}
+		dbUtil.close(rs, stmt, conn);
+		return member;
+	}
+	
 	
 	// 관리자 : 멤버수 (전체 count)
 	public int selectMemberCount() throws Exception {
@@ -76,9 +95,22 @@ public class MemberDao {
 	}
 	
 	// 관리자 멤버 강퇴
-	public int deleteMemberByAdmin(Member member) throws Exception {
+	public int deleteMemberByAdmin(int memberNo) throws Exception {
+		int row = 0;
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = dbUtil.getConnection();
+		String sql = "DELETE FROM member WHERE member_no = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, memberNo);
+	
 		
-		return 0;
+		row = stmt.executeUpdate();
+		if(row == 1) {
+			System.out.println("강퇴 성공---");
+		} 
+
+		dbUtil.close(null, stmt, conn);
+		return row;
 	}
 	
 	//로그인

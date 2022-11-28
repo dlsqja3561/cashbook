@@ -8,14 +8,12 @@
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
 	}
-
-	int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
-
+	
+	int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 
 	// 2. Model 호출
-	CategoryDao categoryDao = new CategoryDao();
-	
-	categoryDao.deleteCategory(categoryNo);
-	System.out.println("category 삭제성공");
-	response.sendRedirect(request.getContextPath()+"/admin/categoryList.jsp");
+	MemberDao memberDao = new MemberDao();
+	memberDao.deleteMemberByAdmin(memberNo);
+	System.out.println("멤버 강퇴 성공");
+	response.sendRedirect(request.getContextPath()+"/admin/memberList.jsp");
 %>
