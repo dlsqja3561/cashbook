@@ -56,6 +56,7 @@
 	<!-- 공지목록 , 페이징 -->
 	<div>
 		<h1>공지</h1>
+		<a href="<%=request.getContextPath()%>/admin/insertNoticeForm.jsp">공지추가</a>
 		<table border="1">
 			<tr>
 				<th>공지내용</th>
@@ -69,8 +70,8 @@
 					<tr>
 						<td><%=n.getNoticeMemo()%></td>
 						<td><%=n.getCreatedate()%></td>
-						<td><a href="<%=request.getContextPath()%>/admin/insertLevel.jsp?memberNo=<%=n.getNoticeNo()%>">수정</a></td>
-						<td><a href="<%=request.getContextPath()%>/admin/insertLevel.jsp?memberNo=<%=n.getNoticeNo()%>">삭제</a></td>
+						<td><a href="<%=request.getContextPath()%>/admin/updateNoticeForm.jsp?noticeNo=<%=n.getNoticeNo()%>">수정</a></td>
+						<td><a href="<%=request.getContextPath()%>/admin/deleteNotice.jsp?noticeNo=<%=n.getNoticeNo()%>">삭제</a></td>
 					</tr>
 			<%
 				}

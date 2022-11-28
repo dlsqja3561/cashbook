@@ -20,29 +20,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/admin/insertCategoryAction.jsp" method="post">
-		<table>
+	<form action="<%=request.getContextPath()%>/admin/insertNoticeAction.jsp" method="post">
+		<table border="1">
 		<%
-			// 정보입력 없으면 msg 출력
-			if(msg != null){
+			// 공지입력 없으면 msg 출력
+			if(msg != null) {
 		%>
-				 <%=msg%>
+				<%=msg%>
 		<%
 			}
 		%>
 			<tr>
-				<th>categoryKind</th>
-				<td>
-					<input type="radio" name ="categoryKind" value="수입">수입
-					<input type="radio" name ="categoryKind" value="지출">지출
-				</td>
+				<th>공지내용</th>
 			</tr>
 			<tr>
-				<th>categoryName</th>
-				<td><input type="text" name="categoryName"></td>
+				<td><textarea rows="4" cols="50" name="noticeMemo"></textarea></td>
 			</tr>
 		</table>
-		<button type="submit">추가</button>
+		<button type="submit">공지입력</button>
 	</form>
 </body>
 </html>

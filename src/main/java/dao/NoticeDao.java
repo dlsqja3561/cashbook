@@ -6,23 +6,46 @@ import util.DBUtil;
 import vo.Notice;
 
 public class NoticeDao {
-	
+	// 공지 삭제 admin -> deleteNotice.jsp
 	public int deleteNotice(Notice notice) throws Exception {
+		int row = 0;
 		String sql ="DELETE FROM notice WHERE notice_no = ?";
 		
-		return 0;
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, notice.getNoticeNo());
+		row = stmt.executeUpdate();
+		
+		dbUtil.close(null, stmt, conn);
+		return row;
 	}
 	
+	// 공지 수정 admin -> 
 	public int updateNotice(Notice notice) throws Exception {
 		String sql = "UPDATE notice SET notice_memo = ? WHERE notice_no = ?";
 		
 		return 0;
 	}
 	
+	// 공지 추가 admin -> insertNoticeAction.jsp
 	public int insertNotice(Notice notice) throws Exception {
+		int row = 0;
 		String sql = "INSERT notice(notice_memo, updatedate, createdate) VALUES(?, NOW(), NOW())";
 		
-		return 0;
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setString(1, notice.getNoticeMemo());
+		row = stmt.executeUpdate();
+		
+		dbUtil.close(null, stmt, conn);
+		
+		return row;
 	}
 	
 	
