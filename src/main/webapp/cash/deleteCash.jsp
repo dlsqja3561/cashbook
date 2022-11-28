@@ -13,6 +13,6 @@
 	CashDao cashDao = new CashDao();
 	
 	int row = cashDao.deleteCash(cashNo);
-	System.out.println("삭제성공");
+	System.out.println("cash 삭제성공");
 	response.sendRedirect(request.getContextPath()+"/cash/cashDateList.jsp?year="+year+"&month="+month+"&date="+date);
 %>

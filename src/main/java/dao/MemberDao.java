@@ -10,7 +10,8 @@ import vo.Member;
 
 public class MemberDao {
 	
-	// 관리자 : 멤버레벨수정
+	// 관리자 : 멤버레벨수정(update), 수정폼(select)
+	// admin -> updateMemberAction.jsp
 	public int updateMemberLevel(Member member) throws Exception {
 		int row = 0;
 		DBUtil dbUtil = new DBUtil();
@@ -30,6 +31,7 @@ public class MemberDao {
 		dbUtil.close(null, stmt, conn);
 		return row;
 	}
+	// admin -> updateMemberForm.jsp
 	
 	// 관리자 : 멤버수 (전체 count)
 	public int selectMemberCount() throws Exception {

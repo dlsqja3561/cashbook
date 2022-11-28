@@ -17,6 +17,7 @@
 
 	Member member = new Member();
 	member.setMemberNo(memberNo);
+	member.setMemberLevel(memberLevel);
 	
 	// 2. Model 호출
 	MemberDao memberDao = new MemberDao();

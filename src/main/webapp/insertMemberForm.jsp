@@ -18,7 +18,7 @@
 	<form action="<%=request.getContextPath()%>/insertMemberAction.jsp" method="post">
 		<table border="1">
 		<%
-			// 정보입력 없으면, id 중복시 msg1 출력
+			// 정보입력 없으면, id 중복시 msg 출력
 			if(msg != null){
 		%>
 				 <%=msg%>
