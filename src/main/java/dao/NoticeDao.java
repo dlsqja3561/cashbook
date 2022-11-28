@@ -23,11 +23,51 @@ public class NoticeDao {
 		return row;
 	}
 	
-	// 공지 수정 admin -> 
+	// 공지 수정 : 수정폼(select), 수정액션(update)
+	// admin -> updateNoticeAction.jsp
 	public int updateNotice(Notice notice) throws Exception {
-		String sql = "UPDATE notice SET notice_memo = ? WHERE notice_no = ?";
+		int row = 0;
 		
-		return 0;
+		String sql = "UPDATE notice SET notice_memo = ?, createdate = NOW() WHERE notice_no = ?";
+		
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setString(1, notice.getNoticeMemo());
+		stmt.setInt(2, notice.getNoticeNo());
+		
+		row = stmt.executeUpdate();
+	
+		dbUtil.close(null, stmt, conn);
+		return row;
+	}
+	// admin -> updateNoticeForm.jsp
+	public Notice selectNoticeOne(int noticeNo) throws Exception {
+		Notice notice = null;
+		
+		String sql = "SELECT notice_no noticeNo, notice_memo noticeMemo"
+					+ " FROM notice"
+					+ " WHERE notice_no = ?";
+		
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, noticeNo);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			notice = new Notice();
+			notice.setNoticeNo(rs.getInt("noticeNo"));
+			notice.setNoticeMemo(rs.getString("noticeMemo"));
+		}
+		dbUtil.close(rs, stmt, conn);
+		return notice;
 	}
 	
 	// 공지 추가 admin -> insertNoticeAction.jsp

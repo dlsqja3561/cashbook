@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="dao.*" %>
 <%@ page import="vo.*" %>
-<%@ page import="dao.*"%>
+
 <%
 	//한글처리 utf-8 인코딩
 	request.setCharacterEncoding("utf-8");
@@ -13,16 +14,17 @@
 	}
 	// 입력값 없을때 msg
 	String msg = request.getParameter("msg");
+
+	int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 	
-	int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
+	Notice notice = null;
 	
-	Category category = null;
-	// Model 호출
-	CategoryDao categoryDao = new CategoryDao();
-	category = categoryDao.selectCategoryOne(categoryNo);
-	
+	NoticeDao noticeDao = new NoticeDao();
+	notice = noticeDao.selectNoticeOne(noticeNo);
 	
 %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,25 +32,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>카테고리 수정</h1>
-	<form action="<%=request.getContextPath()%>/admin/updateCategoryAction.jsp" method="post">
+	<h1>공지 수정</h1>
+	<form action="<%=request.getContextPath()%>/admin/updateNoticeAction.jsp" method="post">
 		<table border="1">
 		<%
-			// 입력 없으면 msg 출력
-			if(msg != null){
+			// 입력값 없으면 msg
+			if(msg != null) {
 		%>
-				 <%=msg%>
+				<%=msg%>
 		<%
 			}
 		%>
 			<tr>
 				<th>번호</th>
-				<th>이름</th>
-
+				<th>내용</th>
 			</tr>
 			<tr>
-				<td><input type="text" name="categoryNo" value="<%=category.getCategoryNo()%>" readonly="readonly"></td>
-				<td><input type="text" name="categoryName" value="<%=category.getCategoryName()%>"></td>
+				<td><input type="text" name="noticeNo" value="<%=notice.getNoticeNo()%>" readonly="readonly"></td>
+				<td><textarea rows="4" cols="50" name="noticeMemo"><%=notice.getNoticeMemo()%></textarea></td>
 			</tr>
 		</table>
 		<button type="submit">수정</button>
