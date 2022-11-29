@@ -30,7 +30,7 @@
 
 	// 2. Model 호출
 	NoticeDao noticeDao = new NoticeDao();
-	noticeDao.insertNotice(notice);
+	int row = noticeDao.insertNotice(notice);
 	System.out.println("공지 입력 성공");
 	response.sendRedirect(request.getContextPath()+"/admin/noticeList.jsp");
 %>

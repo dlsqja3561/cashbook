@@ -153,6 +153,8 @@
 		</tr>
 		</table>
 	</div>
-	
+	<div>
+		<jsp:include page="/inc/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

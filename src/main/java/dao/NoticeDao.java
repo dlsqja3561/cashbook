@@ -14,6 +14,7 @@ public class NoticeDao {
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = null;
 		PreparedStatement stmt = null;
+		
 		conn = dbUtil.getConnection();
 		stmt = conn.prepareStatement(sql);
 		stmt.setInt(1, notice.getNoticeNo());
