@@ -13,7 +13,7 @@
 	System.out.println(commentNo + "commentNo");
 
 	// 2. Model 호출
-	CommentDao commentDao  = new CommentDao();
+	CommentDao commentDao = new CommentDao();
 	
 	int row = commentDao.deleteComment(commentNo);
 	if(row == 1) {

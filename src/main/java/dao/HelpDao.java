@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import util.DBUtil;
+import vo.Comment;
 import vo.Help;
 
 public class HelpDao {
@@ -69,8 +70,7 @@ public class HelpDao {
 		return list;
 	}
 	
-	
-	
+
 	// insertHelp.jsp 문의 추가
 	public int insertHelp(Help help) throws Exception {
 		int row = 0;
@@ -98,7 +98,7 @@ public class HelpDao {
 		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 		
 		String sql = "SELECT h.help_no helpNo, h.help_memo helpMemo, h.createdate helpCreatedate"
-					+ ", c.comment_memo commentMemo, c.createdate commentCcreatedate"
+					+ ", c.comment_memo commentMemo, c.createdate commentCreatedate"
 					+ " FROM help h LEFT OUTER JOIN comment c"
 					+ " ON h.help_no = c.help_no"
 					+ " WHERE h.member_id = ?";
@@ -119,12 +119,71 @@ public class HelpDao {
 			m.put("helpMemo", rs.getString("helpMemo"));
 			m.put("helpCreatedate", rs.getString("helpCreatedate"));
 			m.put("commentMemo", rs.getString("commentMemo"));
-			m.put("commentCcreatedate", rs.getString("commentCcreatedate"));
+			m.put("commentCreatedate", rs.getString("commentCreatedate"));
 			list.add(m);
 		}
 		
 		dbUtil.close(rs, stmt, conn);
 		return list;
+	}
+	
+	// 수정폼(select) -> updateHelpForm.jsp
+	public Help selectHelpOne(int helpNo) throws Exception {
+		Help help = null;
+		String sql = "SELECT help_memo helpMemo"
+					+ " FROM help"
+					+ " WHERE help_no = ?";
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, helpNo);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			help = new Help();
+			help.setHelpMemo(rs.getString("helpMemo"));
+		}
+		dbUtil.close(rs, stmt, conn);
+		return help;
+	}
+	// 문의수정(update) -> updateHelpAction.jsp
+	public int updateHelp(Help help) throws Exception {
+		int row = 0;
+		String sql = "UPDATE help SET help_memo = ?, updatedate = NOW() WHERE help_no = ?";
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setString(1, help.getHelpMemo());
+		stmt.setInt(2, help.getHelpNo());
+		row = stmt.executeUpdate();
+		
+		dbUtil.close(null, stmt, conn);
+		return row;
+	}
+	
+	
+	// 삭제 deleteHelp.jsp
+	public int deleteHelp(int helpNo) throws Exception {
+		int row = 0;
+		String sql = "DELETE FROM help WHERE help_no = ?";
+		
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, helpNo);
+		row = stmt.executeUpdate();
+		
+		dbUtil.close(null, stmt, conn);
+		return row;
 	}
 	
 }

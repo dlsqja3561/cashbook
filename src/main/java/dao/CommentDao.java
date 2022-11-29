@@ -33,7 +33,7 @@ public class CommentDao {
 	// 문의내용 확인 insertCommentForm.jsp
 	public Help selectHelpOne(int helpNo) throws Exception {
 		Help help = null;
-		String sql = "SELECT help_memo helpMemo, member_id memberId, updatedate"
+		String sql = "SELECT help_memo helpMemo, member_id memberId, createdate"
 					+ " FROM help WHERE help_no = ?";
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = null;
@@ -48,7 +48,7 @@ public class CommentDao {
 			help = new Help();
 			help.setHelpMemo(rs.getString("helpMemo"));
 			help.setMemberId(rs.getString("memberId"));
-			help.setUpdatedate(rs.getString("updatedate"));
+			help.setCreatedate(rs.getString("createdate"));
 		}
 		
 		dbUtil.close(rs, stmt, conn);
