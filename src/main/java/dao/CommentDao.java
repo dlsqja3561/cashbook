@@ -55,12 +55,44 @@ public class CommentDao {
 		return help;
 	}
 	
-	// 수정
-	public Comment selectComment(int commentNo) throws Exception {
-		return null;
+	// 수정폼(select) -> updateCommentForm.jsp
+	public Comment selectCommentOne(int commentNo) throws Exception {
+		Comment comment = null;
+		String sql = "SELECT comment_memo commentMemo"
+					+ " FROM comment"
+					+ " WHERE comment_no = ?";
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, commentNo);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			comment = new Comment();
+			comment.setCommentMemo(rs.getString("commentMemo"));
+		}
+		dbUtil.close(rs, stmt, conn);
+		return comment;
 	}
+	// 답변수정(update) -> updateCommentAction.jsp
 	public int updateComment(Comment comment) throws Exception {
-		return 0;
+		int row = 0;
+		String sql = "UPDATE comment SET comment_memo = ?, updatedate = NOW() WHERE comment_no = ?";
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setString(1, comment.getCommentMemo());
+		stmt.setInt(2, comment.getCommentNo());
+		row = stmt.executeUpdate();
+		
+		dbUtil.close(null, stmt, conn);
+		return row;
 	}
 	
 	// 삭제 deleteComment.jsp

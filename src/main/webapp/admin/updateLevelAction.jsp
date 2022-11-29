@@ -29,6 +29,9 @@
 	// 2. Model 호출
 	MemberDao memberDao = new MemberDao();
 	int row = memberDao.updateMemberLevel(member);
-	System.out.println("레벨 변경성공");
-	response.sendRedirect(request.getContextPath()+"/admin/memberList.jsp");
+	if(row == 1) {
+		System.out.println("레벨 변경성공");
+		response.sendRedirect(request.getContextPath()+"/admin/memberList.jsp");
+	}
+	
 %>
