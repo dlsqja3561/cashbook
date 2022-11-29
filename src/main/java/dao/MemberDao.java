@@ -52,7 +52,7 @@ public class MemberDao {
 	}
 	
 	
-	// 관리자 : 멤버수 (전체 count)
+	// 관리자 : 멤버수 (전체 count) 
 	public int selectMemberCount() throws Exception {
 		int count = 0;
 		DBUtil dbUtil = new DBUtil();

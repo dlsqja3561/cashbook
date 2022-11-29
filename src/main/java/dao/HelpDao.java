@@ -11,6 +11,66 @@ import vo.Help;
 
 public class HelpDao {
 	
+	// 관리자 : 문의사항 전체 count
+	public int selectHelpCount() throws Exception {
+		int count = 0;
+		String sql = "SELECT COUNT(*) cnt FROM help";
+		
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		rs = stmt.executeQuery();
+		if(rs.next()) {
+			count = rs.getInt("cnt");
+		}
+		dbUtil.close(rs, stmt, conn);
+		return count;
+	}
+	
+	// 관리자 : selectHelpList 오브로딩
+	public ArrayList<HashMap<String, Object>> selectHelpList(int beginRow, int rowPerPage) throws Exception {
+		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+		
+		String sql = "SELECT h.help_no helpNo, h.help_memo helpMemo"
+					+ ", h.createdate helpCreatedate, h.member_id memberId"
+					+ ", c.comment_no commentNo, c.comment_memo commentMemo, c.createdate commentCreatedate"
+					+ " FROM help h LEFT OUTER JOIN comment c"
+					+ " ON h.help_no = c.help_no"
+					+ " LIMIT ?, ?";
+		
+		DBUtil dbUtil = new DBUtil();
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		conn = dbUtil.getConnection();
+		stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, beginRow);
+		stmt.setInt(2, rowPerPage);
+		
+		rs = stmt.executeQuery();
+		while(rs.next()) {
+			HashMap<String, Object> m = new HashMap<String, Object>();
+			m.put("helpNo", rs.getInt("helpNo"));
+			m.put("helpMemo", rs.getString("helpMemo"));
+			m.put("helpCreatedate", rs.getString("helpCreatedate"));
+			m.put("memberId", rs.getString("memberId"));
+			m.put("commentNo", rs.getInt("commentNo"));
+			m.put("commentMemo", rs.getString("commentMemo"));
+			m.put("commentCreatedate", rs.getString("commentCreatedate"));
+			list.add(m);
+		}
+		
+		dbUtil.close(rs, stmt, conn);
+		return list;
+	}
+	
+	
+	
 	// insertHelp.jsp 문의 추가
 	public int insertHelp(Help help) throws Exception {
 		int row = 0;

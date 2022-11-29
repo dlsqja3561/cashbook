@@ -9,16 +9,16 @@
 		return;
 	}
 
-	int categoryNo = Integer.parseInt(request.getParameter("categoryNo"));
-
+	int commentNo = Integer.parseInt(request.getParameter("commentNo"));
+	System.out.println(commentNo + "commentNo");
 
 	// 2. Model 호출
-	CategoryDao categoryDao = new CategoryDao();
+	CommentDao commentDao  = new CommentDao();
 	
-	int row = categoryDao.deleteCategory(categoryNo);
+	int row = commentDao.deleteComment(commentNo);
 	if(row == 1) {
-		System.out.println("category 삭제성공");
-		response.sendRedirect(request.getContextPath()+"/admin/categoryList.jsp");
+		System.out.println("답변 삭제성공");
+		response.sendRedirect(request.getContextPath()+"/admin/helpListAll.jsp");
 	}
 	
 %>
