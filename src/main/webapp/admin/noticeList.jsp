@@ -47,13 +47,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<ul>
-		<li><a href="<%=request.getContextPath()%>/admin/noticeList.jsp">공지관리</a></li>
-		<li><a href="<%=request.getContextPath()%>/admin/">고객센터관리</a></li>
-		<li><a href="<%=request.getContextPath()%>/admin/categoryList.jsp">카테고리관리</a></li>
-		<li><a href="<%=request.getContextPath()%>/admin/memberList.jsp">맴버관리(목록, 레벨수정, 강제탈퇴)</a></li>
-		<li><a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a></li>
-	</ul>
+	<div>
+		<jsp:include page="/inc/menu.jsp"></jsp:include>
+	</div>
 	<!-- 공지목록 , 페이징 -->
 	<div>
 		<h1>공지</h1>

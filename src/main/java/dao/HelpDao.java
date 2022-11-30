@@ -1,14 +1,15 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import util.DBUtil;
-import vo.Comment;
-import vo.Help;
+import vo.*;
+
 
 public class HelpDao {
 	

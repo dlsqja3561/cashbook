@@ -27,6 +27,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- include -->
+	<div>
+		<jsp:include page="/inc/memberMenu.jsp"></jsp:include>
+	</div>
    <h1>고객센터</h1>
    <div>
       <a href="<%=request.getContextPath()%>/help/insertHelpForm.jsp">문의추가</a>
@@ -103,6 +107,9 @@
          }
       %>
    </table>
-
+	<!-- include -->
+	<div>
+		<jsp:include page="/inc/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

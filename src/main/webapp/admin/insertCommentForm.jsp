@@ -37,7 +37,7 @@
 			<tr>
 				<td><%=help.getHelpMemo()%></td>
 				<td><%=help.getMemberId()%></td>
-				<td><%=help.getUpdatedate()%></td>
+				<td><%=help.getCreatedate()%></td>
 			</tr>
 		</table>
 	</div>

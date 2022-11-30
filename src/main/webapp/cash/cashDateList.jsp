@@ -43,6 +43,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- include -->
+	<div>
+		<jsp:include page="/inc/memberMenu.jsp"></jsp:include>
+	</div>
 	<!-- cash 입력 폼 -->
 	<form action="<%=request.getContextPath()%>/cash/insertCashAction.jsp" method="post">
 		<input type="hidden" name="year" value="<%=year%>">
@@ -121,5 +125,9 @@
 			}
 		%>
 	</table>
+	<!-- include -->
+	<div>
+		<jsp:include page="/inc/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

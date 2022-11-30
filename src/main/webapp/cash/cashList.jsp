@@ -73,20 +73,11 @@
 <title>cashList</title>
 </head>
 <body>
+	<!-- include -->
 	<div>
-		<!-- 로그인 정보(세션 loginMember 변수) 출력 -->
-		<span><%=loginMember.getMemberId()%>(<%=loginMember.getMemberName()%>)</span>님 반갑습니다.
-		<a href="<%=request.getContextPath()%>/logout.jsp">로그아웃</a>
-		<a href="<%=request.getContextPath()%>/updateMemberForm.jsp">내정보수정</a>
-		<a href="<%=request.getContextPath()%>/deleteMemberForm.jsp">회원탈퇴</a>
-		<%
-			if(loginMember.getMemberLevel() > 0) {
-		%>
-				<a href="<%=request.getContextPath()%>/admin/adminMain.jsp">관리자 페이지</a>
-		<%
-			}
-		%>
+		<jsp:include page="/inc/memberMenu.jsp"></jsp:include>
 	</div>
+	
 	
 	<div>
 		<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&#8701;이전달</a>
@@ -153,6 +144,7 @@
 		</tr>
 		</table>
 	</div>
+	<!-- include -->
 	<div>
 		<jsp:include page="/inc/footer.jsp"></jsp:include>
 	</div>
