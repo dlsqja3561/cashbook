@@ -99,20 +99,20 @@
 				<th>토</th>
 			</tr>
 			<tr>
-		<%
-			for(int i=1; i<=totalTd; i++) {
-		%>
-				<td>
-		<%
-					int date = i-beginBlank;
-					if(date > 0 && date <= lastDate) {
-		%>
-						<div>
-							<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
-								<%=date%>
-							</a>
-						</div>
-						<div>
+			<%
+				for(int i=1; i<=totalTd; i++) {
+			%>
+					<td>
+			<%
+						int date = i-beginBlank;
+						if(date > 0 && date <= lastDate) {
+			%>
+							<div>
+								<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+									<%=date%>
+								</a>
+							</div>
+							<div>
 							<%
 								for(HashMap<String, Object> m : list) {
 									String cashDate = (String)(m.get("cashDate"));
@@ -128,19 +128,19 @@
 									}
 								}
 							%>
-						</div>
-		<%
+							</div>
+			<%
+						}
+			%>
+					</td>
+			<%		
+					if(i%7 == 0 && i != totalTd) {
+			%>
+						</tr><tr> <!-- td 7개 만들고 테이블 줄바꿈 -->
+			<%
 					}
-		%>
-				</td>
-		<%		
-				if(i%7 == 0 && i != totalTd) {
-		%>
-					</tr><tr> <!-- td 7개 만들고 테이블 줄바꿈 -->
-		<%
 				}
-			}
-		%>
+			%>
 		</tr>
 		</table>
 	</div>
