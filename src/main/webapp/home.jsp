@@ -81,6 +81,8 @@
 	<link rel="shortcut icon" href="./resorces/img/icons/icon-48x48.png" />
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 
 	<title>AdminKit Demo - Bootstrap 5 Admin Template</title>
 
@@ -92,13 +94,13 @@
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">AdminKit</span>
+				<a class="sidebar-brand" href="<%=request.getContextPath()%>/cash/cashList.jsp">
+          <span class="align-middle">IBCashBook</span>
         </a>
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						Pages
+						Member menu
 					</li>
 
 					<li class="sidebar-item active">
@@ -132,38 +134,33 @@
 					</li>
 
 					<li class="sidebar-header">
-						Tools & Components
+						Admin menu
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-buttons.html">
-              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Buttons</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/noticeList.jsp">
+              <i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage announcements</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-forms.html">
-              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Forms</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/categoryList.jsp">
+              <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Manage category</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-cards.html">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Cards</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/memberList.jsp">
+              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Manage member</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
-              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/helpListAll.jsp">
+              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Manage customer service</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons-feather.html">
-              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-            </a>
-					</li>
 
 					<li class="sidebar-header">
 						Plugins & Addons
@@ -199,8 +196,8 @@
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light navbar-bg">
 				<a class="sidebar-toggle js-sidebar-toggle">
-          <i class="hamburger align-self-center"></i>
-        </a>
+		          <i class="hamburger align-self-center"></i>
+		        </a>
 
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
@@ -380,15 +377,16 @@
 
 									<h5 class="card-title mb-0">Calendar</h5>
 								</div>
+								<!-- 달력 출력 -->
 								<table class="table table-hover my-0">
 										<tr class="text-center table-active">
-											<th style="color:red">일</th>
+											<th class="text-danger">일</th>
 											<th>월</th>
 											<th>화</th>
 											<th>수</th>
 											<th>목</th>
 											<th>금</th>
-											<th style="color:blue">토</th>
+											<th class="text-primary">토</th>
 										</tr>
 										<tr style="height:150px">
 										<%
@@ -397,13 +395,40 @@
 												<td>
 										<%
 													int date = i-beginBlank;
+													// 토요일, 일요일 색 변경하기
+													Calendar colDate = Calendar.getInstance();
+													colDate.set(Calendar.YEAR, year);
+													colDate.set(Calendar.MONTH, month);
+													colDate.set(Calendar.DATE, date);
+													int coldate = colDate.get(Calendar.DAY_OF_WEEK);
 													if(date > 0 && date <= lastDate) {
+														if(coldate == 7) { // 토요일 파란색
 										%>
 														<div>
 															<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
-																<%=date%>
+																<span class="text-primary"><%=date%></span>
 															</a>
 														</div>
+										<%
+														} else if(coldate == 1) { // 일요일 빨간색
+										%>
+														<div>
+															<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+																<span class="text-danger"><%=date%></span>
+															</a>
+														</div>
+										<%
+														} else { // 평일 검은색
+										%>
+														<div>
+															<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+																<span class="text-dark"><%=date%></span>
+															</a>
+														</div>
+										<%
+														}
+										%>
+														
 														<div>
 														<%
 															for(HashMap<String, Object> m : list) {
@@ -473,7 +498,7 @@
 		</div>
 	</div>
 
-	<script src="js/app.js"></script>
+	<script src="./resprces/js/app.js"></script>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
