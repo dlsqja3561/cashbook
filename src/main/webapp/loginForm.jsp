@@ -46,7 +46,7 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+	<link rel="shortcut icon" href="./resorces/img/icons/icon-48x48.png" />
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 	<title>loginForm</title>
 	<link href="./resorces/css/app.css" rel="stylesheet">
@@ -54,12 +54,13 @@
 </head>
 
 <body>
+	<!-- 공지목록 -->
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row pt-5">
-				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+				<div class="col-sm-10 col-md-8 col-lg-7 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
-						<table class="table my-0 text-center">
+						<table class="table my-2 text-center">
 							<tr>
 								<th>공지내용</th>
 								<th>날짜</th>
@@ -103,6 +104,18 @@
 						%>
 							<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>">&nbsp;마지막</a>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+	<!-- 로그인 폼 -->
+	<main class="d-flex w-100">
+		<div class="container d-flex flex-column">
+			<div class="row pt-5">
+				<div class="col-sm-10 col-md-8 col-lg-5 mx-auto d-table h-100">
+					<div class="d-table-cell align-middle">
 						<div class="text-center mt-4">
 							<h1 class="h2">Welcome back</h1>
 							<%
@@ -116,7 +129,7 @@
 						</div>
 						<div class="card">
 							<div class="card-body">
-								<div class="m-sm-4">
+								<div class="m-sm-5">
 									<!-- 로그인 폼 -->
 									<form action="<%=request.getContextPath()%>/loginAction.jsp" method="post">
 										<div class="mb-3">
@@ -127,8 +140,8 @@
 											<label class="form-label">Password</label>
 											<input class="form-control form-control-lg" type="password" name="memberPw" placeholder="Enter your password" />
 											<small>
-									            <a href="loginForm.jsp">Forgot password?</a>
-									          </small>
+												<a href="loginForm.jsp">Forgot password?</a>
+											</small>
 										</div>
 										<div>
 											<label class="form-check">
@@ -146,14 +159,11 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
-
-	<script src="./resorces/js/app.js"></script>
 
 </body>
 

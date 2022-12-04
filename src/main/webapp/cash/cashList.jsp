@@ -6,10 +6,10 @@
 	// Controller : seesion, request
 	
 	// 로그인이 안되어 있을때는 접근불가 로그인 폼으로
-	if(session.getAttribute("loginMember") == null) {
-		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
-		return;
-	}
+//	if(session.getAttribute("loginMember") == null) {
+//		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
+//		return;
+//	}
 	// seesion에 저장된 멤버(현재 로그인 사용자)
 	Member loginMember = (Member)session.getAttribute("loginMember");
 
@@ -67,86 +67,368 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>cashList</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="../resorces/img/icons/icon-48x48.png" />
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+	<title>cashList</title>
+	<link href="../resorces/css/app.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-	<!-- include -->
-	<div>
-		<jsp:include page="/inc/memberMenu.jsp"></jsp:include>
-	</div>
-	
-	
-	<div>
-		<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&#8701;이전달</a>
-		
-		<%=year%>년 <%=month+1%>월
-		
-		<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>">&#8702;다음달</a>
-	</div>
-	<div>
-		<!-- 달력 -->
-		<table border="1">
-			<tr>
-				<th>일</th>
-				<th>월</th>
-				<th>화</th>
-				<th>수</th>
-				<th>목</th>
-				<th>금</th>
-				<th>토</th>
-			</tr>
-			<tr>
-			<%
-				for(int i=1; i<=totalTd; i++) {
-			%>
-					<td>
-			<%
-						int date = i-beginBlank;
-						if(date > 0 && date <= lastDate) {
-			%>
-							<div>
-								<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
-									<%=date%>
-								</a>
+	<div class="wrapper">
+		<nav id="sidebar" class="sidebar js-sidebar">
+			<div class="sidebar-content js-simplebar">
+				<a class="sidebar-brand" href="<%=request.getContextPath()%>/cash/cashList.jsp">
+					<span class="align-middle">IBCashBook</span>
+				</a>
+
+				<ul class="sidebar-nav">
+					<li class="sidebar-header">
+						Member menu
+					</li>
+
+					<li class="sidebar-item active">
+						<a class="sidebar-link" href="#">
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="#">
+							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="#">
+							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="#">
+							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="#">
+							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
+						</a>
+					</li>
+
+					<li class="sidebar-header">
+						Admin menu
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/noticeList.jsp">
+							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage announcements</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/categoryList.jsp">
+							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Manage category</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/memberList.jsp">
+							<i class="align-middle" data-feather="grid"></i> <span class="align-middle">Manage member</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/helpListAll.jsp">
+							<i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Manage customer service</span>
+						</a>
+					</li>
+
+
+					<li class="sidebar-header">
+						Plugins / Addons
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="charts-chartjs.html">
+							<i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="maps-google.html">
+							<i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+						</a>
+					</li>
+				</ul>
+
+				<div class="sidebar-cta">
+					<div class="sidebar-cta-content">
+						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
+						<div class="mb-3 text-sm">
+							Are you looking for more components? Check out our premium version.
+						</div>
+						<div class="d-grid">
+							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="main">
+			<nav class="navbar navbar-expand navbar-light navbar-bg">
+				<a class="sidebar-toggle js-sidebar-toggle">
+		          <i class="hamburger align-self-center"></i>
+		        </a>
+
+				<div class="navbar-collapse collapse">
+					<ul class="navbar-nav navbar-align">
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+								<span class="position-relative">
+									<i class="align-middle" data-feather="bell"></i>
+									<span class="indicator">4</span>
+								</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+								<div class="dropdown-menu-header">
+									4 New Notifications
+								</div>
+								<div class="list-group">
+									<a href="#" class="list-group-item">
+										<span class="row g-0 align-items-center">
+											<span class="col-2">
+												<i class="text-danger" data-feather="alert-circle"></i>
+											</span>
+											<span class="col-10">
+												<span class="text-dark">Update completed</span><br>
+												<span class="text-muted small mt-1">Restart server 12 to complete the update.</span><br>
+												<span class="text-muted small mt-1">30m ago</span>
+											</span>
+										</span>
+									</a>
+									<a href="#" class="list-group-item">
+										<span class="row g-0 align-items-center">
+											<span class="col-2">
+												<i class="text-warning" data-feather="bell"></i>
+											</span>
+											<span class="col-10">
+												<span class="text-dark">Lorem ipsum</span><br>
+												<span class="text-muted small mt-1">Aliquam ex eros, imperdiet vulputate hendrerit et.</span><br>
+												<span class="text-muted small mt-1">2h ago</span>
+											</span>
+										</span>
+									</a>
+									<a href="#" class="list-group-item">
+										<span class="row g-0 align-items-center">
+											<span class="col-2">
+												<i class="text-primary" data-feather="home"></i>
+											</span>
+											<span class="col-10">
+												<span class="text-dark">Login from 192.186.1.8</span><br>
+												<span class="text-muted small mt-1">5h ago</span>
+											</span>
+										</span>
+									</a>
+									<a href="#" class="list-group-item">
+										<span class="row g-0 align-items-center">
+											<span class="col-2">
+												<i class="text-success" data-feather="user-plus"></i>
+											</span>
+											<span class="col-10">
+												<span class="text-dark">New connection</span><br>
+												<span class="text-muted small mt-1">Christina accepted your request.</span><br>
+												<span class="text-muted small mt-1">14h ago</span>
+											</span>
+										</span>
+									</a>
+								</div>
+								<div class="dropdown-menu-footer">
+									<a href="#" class="text-muted">Show all notifications</a>
+								</div>
 							</div>
-							<div>
-							<%
-								for(HashMap<String, Object> m : list) {
-									String cashDate = (String)(m.get("cashDate"));
-									if(Integer.parseInt(cashDate.substring(8)) == date) {
-							%>
-										[<%=(String)(m.get("categoryKind"))%>]
-										<%=(String)(m.get("categoryName"))%>
-										<%=(Long)(m.get("cashPrice"))%>원
-										<br>
-										
-							<%
+						</li>
+						
+						
+						<!-- ------------------------------------------------------------------------ -->
+						<li class="nav-item dropdown">
+							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+								<i class="align-middle" data-feather="settings"></i>
+							</a>
+
+							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+								<span class="text-dark">[<%=loginMember.getMemberId()%>(<%=loginMember.getMemberName()%>)]</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end">
+								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+								<a class="dropdown-item" href="<%=request.getContextPath()%>/admin/adminMain.jsp"><i class="align-middle me-1" data-feather="pie-chart"></i> 관리자 페이지</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="<%=request.getContextPath()%>/updateMemberForm.jsp"><i class="align-middle me-1" data-feather="settings"></i> 비밀번호 변경</a>
+								<a class="dropdown-item" href="<%=request.getContextPath()%>/deleteMemberForm.jsp"><i class="align-middle me-1" data-feather="help-circle"></i> 회원탈퇴</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="<%=request.getContextPath()%>/logout.jsp"> 로그아웃</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<main class="content">
+				<div class="container-fluid p-0">
+
+					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+
 					
-									}
-								}
-							%>
+					<div class="text-center">
+						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&#8701;이전달</a>
+						
+						<%=year%>년 <%=month+1%>월
+						
+						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>">다음달&#8702;</a>
+					</div>
+
+
+					<div class="row">
+						<div class="col-12 col-lg-10 col-xxl-12 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Calendar</h5>
+								</div>
+								<!-- 달력 출력 -->
+								<table class="table table-hover my-0">
+										<tr class="text-center table-active">
+											<th class="text-danger">일</th>
+											<th>월</th>
+											<th>화</th>
+											<th>수</th>
+											<th>목</th>
+											<th>금</th>
+											<th class="text-primary">토</th>
+										</tr>
+										<tr style="height:150px">
+										<%
+											for(int i=1; i<=totalTd; i++) {
+										%>
+												<td>
+										<%
+													int date = i-beginBlank;
+													// 토요일, 일요일 색 변경하기
+													Calendar colDate = Calendar.getInstance();
+													colDate.set(Calendar.YEAR, year);
+													colDate.set(Calendar.MONTH, month);
+													colDate.set(Calendar.DATE, date);
+													int coldate = colDate.get(Calendar.DAY_OF_WEEK);
+													if(date > 0 && date <= lastDate) {
+														if(coldate == 7) { // 토요일 파란색
+										%>
+														<div>
+															<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+																<span class="text-primary"><%=date%></span>
+															</a>
+														</div>
+										<%
+														} else if(coldate == 1) { // 일요일 빨간색
+										%>
+														<div>
+															<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+																<span class="text-danger"><%=date%></span>
+															</a>
+														</div>
+										<%
+														} else { // 평일 검은색
+										%>
+														<div>
+															<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+																<span class="text-dark"><%=date%></span>
+															</a>
+														</div>
+										<%
+														}
+										%>
+														
+														<div>
+														<%
+															for(HashMap<String, Object> m : list) {
+																String cashDate = (String)(m.get("cashDate"));
+																if(Integer.parseInt(cashDate.substring(8)) == date) {
+														%>
+																	[<%=(String)(m.get("categoryKind"))%>]
+																	<%=(String)(m.get("categoryName"))%>
+																	<%=(Long)(m.get("cashPrice"))%>원
+																	<br>
+																	
+														<%
+												
+																}
+															}
+														%>
+														</div>
+										<%
+													}
+										%>
+												</td>
+										<%		
+												if(i%7 == 0 && i != totalTd) {
+										%>
+													</tr><tr style="height:150px"> <!-- td 7개 만들고 테이블 줄바꿈 -->
+										<%
+												}
+											}
+										%>
+									</tr>
+								</table>
 							</div>
-			<%
-						}
-			%>
-					</td>
-			<%		
-					if(i%7 == 0 && i != totalTd) {
-			%>
-						</tr><tr> <!-- td 7개 만들고 테이블 줄바꿈 -->
-			<%
-					}
-				}
-			%>
-		</tr>
-		</table>
+						</div>
+						
+					</div>
+
+				</div>
+			</main>
+			
+
+			<footer class="footer">
+				<div class="container-fluid">
+					<div class="row text-muted">
+						<div class="col-6 text-start">
+							<p class="mb-0">
+								<a class="text-muted" href="#" target="_blank"><strong>IBCashBook</strong></a> - <a class="text-muted" href="#" target="_blank"><strong>Copyright</strong></a>								&copy;
+							</p>
+						</div>
+						<div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="<%=request.getContextPath()%>/help/helpList.jsp" target="_blank">Support</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="<%=request.getContextPath()%>/help/helpList.jsp" target="_blank">Help Center</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#" target="_blank">Privacy</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#" target="_blank">Terms</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
 	</div>
-	<!-- include -->
-	<div>
-		<jsp:include page="/inc/footer.jsp"></jsp:include>
-	</div>
+
 </body>
 </html>
