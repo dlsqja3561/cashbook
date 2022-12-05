@@ -45,7 +45,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="../resorces/img/icons/icon-48x48.png" />
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-up.html" />
-	<title>insertMemberForm</title>
+	<title>updateCashForm</title>
 	<link href="../resorces/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -60,7 +60,7 @@
 						<div class="text-center mt-4">
 							<h1 class="h2">수정하기</h1>
 							<%
-								// 정보입력 없으면, id 중복시 msg 출력
+								// 수정 입력 없으면 msg 출력
 								if(msg != null){
 							%>
 									 <%=msg%>
@@ -80,18 +80,10 @@
 										<input type="hidden" name="cashNo" value="<%=cashNo%>">
 										<div class="text-center">
 											<table class="table table-hover my-0">
-												<%
-													// 수정 입력 없으면 msg 출력
-													if(msg != null){
-												%>
-														 <%=msg%>
-												<%
-													}
-												%>
 												<tr>
 													<td>categoryNo</td>
 													<td>
-														<select name = "categoryNo">
+														<select name = "categoryNo" class="form-select form-select-lg">
 															<%
 																// category 목록 출력
 																for(Category c : categoryList) {
@@ -108,23 +100,23 @@
 												<tr>
 													<td>cashDate</td>
 													<td>
-														<input type="text" name="cashDate" value="<%=year%>-<%=month%>-<%=date%>" readonly="readonly">
+														<input type="text" name="cashDate" class="form-control form-control-lg" value="<%=year%>-<%=month%>-<%=date%>" readonly="readonly">
 													</td>
 												</tr>
 												<tr>
 													<td>cashPrice</td>
 													<td>
-														<input type="text" name="cashPrice" value="<%=cashPrice%>">
+														<input type="text" name="cashPrice" class="form-control form-control-lg" value="<%=cashPrice%>">
 													</td>
 												</tr>
 												<tr>
 													<td>cashMemo</td>
 													<td>
-														<textarea rows="3" cols="50" name="cashMemo"><%=cashMemo%></textarea>
+														<textarea rows="5" cols="70" name="cashMemo" class="form-control form-control-lg"><%=cashMemo%></textarea>
 													</td>
 												</tr>
 											</table>
-											<button type="submit">수정완료</button>
+											<button type="submit" class="btn btn-lg btn-primary">수정완료</button>
 										</div>
 									</form>
 								</div>

@@ -46,16 +46,12 @@
 	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="../resorces/img/icons/icon-48x48.png" />
-
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-
 	<title>cashDateList</title>
-
 	<link href="../resorces/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -294,7 +290,7 @@
 										<tr>
 											<td>categoryNo</td>
 											<td>
-												<select name = "categoryNo">
+												<select name = "categoryNo" class="form-select form-select-lg">
 													<%
 														// category 목록 출력
 														for(Category c : categoryList) {
@@ -311,19 +307,19 @@
 										<tr>
 											<td>cashDate</td>
 											<td>
-												<input type="text" name="cashDate" value="<%=year%>-<%=month%>-<%=date%>" readonly="readonly">
+												<input type="text" name="cashDate" class="form-control form-control-lg" value="<%=year%>-<%=month%>-<%=date%>" readonly="readonly">
 											</td>
 										</tr>
 										<tr>
 											<td>cashPrice</td>
 											<td>
-												<input type="text" name="cashPrice">
+												<input type="text" name="cashPrice" class="form-control form-control-lg">
 											</td>
 										</tr>
 										<tr>
 											<td>cashMemo</td>
 											<td>
-												<textarea rows="3" cols="50" name="cashMemo"></textarea>
+												<textarea rows="3" cols="50" name="cashMemo" class="form-control form-control-lg"></textarea>
 											</td>
 										</tr>
 									</table>
