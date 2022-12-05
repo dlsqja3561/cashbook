@@ -106,6 +106,12 @@
 					<li class="sidebar-header">
 						Admin menu
 					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/adminMain.jsp">
+							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Admin page</span>
+						</a>
+					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/noticeList.jsp">

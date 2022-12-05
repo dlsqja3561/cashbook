@@ -6,10 +6,10 @@
 	// Controller : seesion, request
 	
 	// 로그인이 안되어 있을때는 접근불가 로그인 폼으로
-//	if(session.getAttribute("loginMember") == null) {
-//		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
-//		return;
-//	}
+	if(session.getAttribute("loginMember") == null) {
+		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
+		return;
+	}
 	// seesion에 저장된 멤버(현재 로그인 사용자)
 	Member loginMember = (Member)session.getAttribute("loginMember");
 
@@ -131,6 +131,12 @@
 
 					<li class="sidebar-header">
 						Admin menu
+					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/adminMain.jsp">
+							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Admin page</span>
+						</a>
 					</li>
 
 					<li class="sidebar-item">
