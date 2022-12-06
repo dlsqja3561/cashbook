@@ -45,7 +45,7 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT member_no memberNo, member_level memberLevel"
+		String sql = "SELECT member_no memberNo, member_name memberName, member_level memberLevel"
 				+ " FROM member"
 				+ " WHERE member_no = ?";
 		try {
@@ -56,6 +56,7 @@ public class MemberDao {
 			if(rs.next()) {
 				member = new Member();
 				member.setMemberNo(rs.getInt("memberNo"));
+				member.setMemberName(rs.getString("memberName"));
 				member.setMemberLevel(rs.getInt("memberLevel"));
 			}
 		} catch(Exception e) {
