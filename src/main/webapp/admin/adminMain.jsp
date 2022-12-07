@@ -257,10 +257,10 @@
 			</nav>
 
 			<main class="content">
-				<div class="container-fluid p-5">
+				<div class="container-fluid p-2">
 					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
 					<div class="row">
-						<div class="col-12 col-lg-10 col-xxl-5 d-flex">
+						<div class="col-12 col-lg-10 col-xxl-8 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
 									<h5 class="card-title mb-0">최근공지</h5>
@@ -291,10 +291,10 @@
 			</main>
 			
 			<main class="content">
-				<div class="container-fluid p-5">
+				<div class="container-fluid p-2">
 					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
 					<div class="row">
-						<div class="col-12 col-lg-10 col-xxl-10 d-flex">
+						<div class="col-10 col-lg-8 col-xxl-8 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
 									<h5 class="card-title mb-0">최근멤버</h5>
@@ -329,10 +329,10 @@
 			</main>
 			
 			<main class="content">
-				<div class="container-fluid p-5">
+				<div class="container-fluid p-2">
 					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
 					<div class="row">
-						<div class="col-12 col-lg-10 col-xxl-10 d-flex">
+						<div class="col-12 col-lg-10 col-xxl-8 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
 									<h5 class="card-title mb-0">최근문의</h5>

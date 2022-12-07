@@ -49,7 +49,7 @@
 	<link rel="shortcut icon" href="./resorces/img/icons/icon-48x48.png" />
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 	<title>loginForm</title>
-	<link href="./resorces/css/app.css" rel="stylesheet">
+	<link href="./resorces/css/bootstrap.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -152,8 +152,8 @@
 											</label>
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">로그인</button>
-											<a href="<%=request.getContextPath()%>/insertMemberForm.jsp" class="btn btn-lg btn-primary">회원가입</a>
+											<button type="submit" class="btn  btn-primary">로그인</button>
+											<a href="<%=request.getContextPath()%>/insertMemberForm.jsp" class="btn  btn-primary">회원가입</a>
 										</div>
 									</form>
 								</div>
