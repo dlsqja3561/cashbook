@@ -46,11 +46,12 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="./resorces/img/icons/icon-48x48.png" />
+	<link rel="shortcut icon" href="./resorces/img/icons/favicon-32x32.png" />
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 	<title>loginForm</title>
-	<link href="./resorces/css/bootstrap.css" rel="stylesheet">
+	<link href="./resorces/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body>
@@ -78,15 +79,15 @@
 						</table>
 						<!-- 페이징 -->
 						<div class="text-center pt-2">
-							<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1">처음&nbsp;</a>
+							<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1"><i class='fas fa-angle-double-left'></i>&nbsp;</a>
 						<%
 							if(currentPage > 1) {
 						%>
-								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage-1%>"><%="<"%></a>
+								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage-1%>"><i class='fas fa-angle-left'></i></a>
 						<%	// 1페이지일때 이전버튼 클릭시 
 							} else {
 						%>
-								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1"><%="<"%></a>
+								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1"><i class='fas fa-angle-left'></i></a>
 						<%
 							}
 						%>
@@ -94,15 +95,15 @@
 						<%
 							if(currentPage < lastPage) {
 						%>
-								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage+1%>"><%=">"%></a>
+								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage+1%>"><i class='fas fa-angle-right'></i></a>
 						<%	// 마지막페이지 일때 다음버튼 클릭시
 							} else {
 						%>
-								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>"><%=">"%></a>
+								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>"><i class='fas fa-angle-right'></i></a>
 						<%
 							}
 						%>
-							<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>">&nbsp;마지막</a>
+							<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>">&nbsp;<i class='fas fa-angle-double-right'></i></a>
 						</div>
 					</div>
 				</div>
@@ -134,11 +135,11 @@
 									<form action="<%=request.getContextPath()%>/loginAction.jsp" method="post">
 										<div class="mb-3">
 											<label class="form-label">ID</label>
-											<input class="form-control form-control-lg" type="text" name="memberId" placeholder="Enter your id" />
+											<input class="form-control form-control-lg" type="text" name="memberId" value="admin">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" name="memberPw" placeholder="Enter your password" />
+											<input class="form-control form-control-lg" type="password" name="memberPw" value="1234">
 											<small>
 												<a href="loginForm.jsp">Forgot password?</a>
 											</small>

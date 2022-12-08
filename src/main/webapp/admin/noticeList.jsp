@@ -56,6 +56,7 @@
 	<title>noticeList</title>
 	<link href="../resorces/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body>
@@ -300,31 +301,31 @@
 								</div>
 								<!-- 공지 페이징 -->
 								<div>
-									<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=1">처음</a>
+									<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=1"><i class='fas fa-angle-double-left'></i>&nbsp;</a>
 								<%
 									if(currentPage > 1) {
 								%>
-										<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=currentPage-1%>"><%="<"%></a>
+										<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=currentPage-1%>"><i class='fas fa-angle-left'></i></a>
 								<%	// 1페이지일때 이전버튼 클릭시 
 									} else {
 								%>
-										<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=1"><%="<"%></a>
+										<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=1"><i class='fas fa-angle-left'></i></a>
 								<%
 									}
 								%>
-									<span><%=currentPage%> / <%=noticeLastPage%></span>
+									<span>&nbsp;[<%=currentPage%> / <%=noticeLastPage%>]&nbsp;</span>
 								<%
 									if(currentPage < noticeLastPage) {
 								%>
-										<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=currentPage+1%>"><%=">"%></a>
+										<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=currentPage+1%>"><i class='fas fa-angle-right'></i></a>
 								<%	// 마지막페이지 일때 다음버튼 클릭시
 									} else {
 								%>
-										<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=noticeLastPage%>"><%=">"%></a>
+										<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=noticeLastPage%>"><i class='fas fa-angle-right'></i></a>
 								<%
 									}
 								%>
-									<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=noticeLastPage%>">마지막</a>
+									<a href="<%=request.getContextPath()%>/admin/noticeList.jsp?currentPage=<%=noticeLastPage%>">&nbsp;<i class='fas fa-angle-double-right'></i></a>
 								</div>
 							</div>
 						</div>
