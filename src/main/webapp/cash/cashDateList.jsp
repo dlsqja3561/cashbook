@@ -150,18 +150,6 @@
 						</a>
 					</li>
 				</ul>
-
-				<div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div>
 			</div>
 		</nav>
 
@@ -265,7 +253,7 @@
 
 			<main class="content">
 				<div class="container-fluid p-5">
-					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+					<h1 class="h3 mb-3"><strong>수입/지출 내역입력</strong></h1>
 					<div class="row">
 						<div class="col-12 col-lg-10 col-xxl-5 d-flex">
 							<div class="card flex-fill">
@@ -334,7 +322,7 @@
 			
 			<main class="content">
 				<div class="container-fluid p-5">
-					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+					<h1 class="h3 mb-3"><strong>수입/지출 내역확인</strong></h1>
 					<div class="row">
 						<div class="col-12 col-lg-10 col-xxl-10 d-flex">
 							<div class="card flex-fill">
@@ -359,8 +347,8 @@
 												<td><%=m.get("categoryName")%></td>
 												<td><%=m.get("cashPrice")%>원</td>
 												<td><%=m.get("cashMemo")%></td>
-												<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=m.get("cashNo")%>&year=<%=year%>&month=<%=month%>&date=<%=date%>&categoryKind=<%=m.get("categoryKind")%>&categoryName=<%=m.get("categoryName")%>&cashPrice=<%=m.get("cashPrice")%>&cashMemo=<%=m.get("cashMemo")%>">수정</a></td>
-												<td><a href="<%=request.getContextPath()%>/cash/deleteCash.jsp?cashNo=<%=m.get("cashNo")%>&year=<%=year%>&month=<%=month%>&date=<%=date%>">삭제</a></td>
+												<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=m.get("cashNo")%>&year=<%=year%>&month=<%=month%>&date=<%=date%>&categoryKind=<%=m.get("categoryKind")%>&categoryName=<%=m.get("categoryName")%>&cashPrice=<%=m.get("cashPrice")%>&cashMemo=<%=m.get("cashMemo")%>" class="btn btn-outline-info">수정</a></td>
+												<td><a href="<%=request.getContextPath()%>/cash/deleteCash.jsp?cashNo=<%=m.get("cashNo")%>&year=<%=year%>&month=<%=month%>&date=<%=date%>" class="btn btn-outline-danger">삭제</a></td>
 											</tr>
 									<%
 										}

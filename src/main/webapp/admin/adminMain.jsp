@@ -143,18 +143,6 @@
 						</a>
 					</li>
 				</ul>
-
-				<div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div>
 			</div>
 		</nav>
 
@@ -263,7 +251,7 @@
 						<div class="col-12 col-lg-10 col-xxl-8 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-									<h5 class="card-title mb-0">NoticeList</h5>
+									<h5 class="card-title mb-0"><a href="<%=request.getContextPath()%>/admin/noticeList.jsp">Notice List</a></h5>
 								</div>
 								<!-- 최근공지 목록 -->
 								<div>
@@ -297,7 +285,7 @@
 						<div class="col-12 col-lg-10 col-xxl-8 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-									<h5 class="card-title mb-0">Help List</h5>
+									<h5 class="card-title mb-0"><a href="<%=request.getContextPath()%>/admin/helpListAll.jsp">Help List</a></h5>
 								</div>
 								<!-- 최근문의 목록 -->
 								<div>
@@ -333,7 +321,7 @@
 						<div class="col-10 col-lg-8 col-xxl-8 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-									<h5 class="card-title mb-0">Member List</h5>
+									<h5 class="card-title mb-0"><a href="<%=request.getContextPath()%>/admin/memberList.jsp">Member List</a></h5>
 								</div>
 								<!-- 최근멤버 목록 -->
 								<div>

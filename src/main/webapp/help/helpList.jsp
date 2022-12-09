@@ -135,18 +135,6 @@
 						</a>
 					</li>
 				</ul>
-
-				<div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div>
 			</div>
 		</nav>
 
@@ -252,7 +240,7 @@
 				<div class="container-fluid p-5">
 					<h1 class="h3 mb-3"><strong>고객센터</strong> 문의하기</h1>
 					<div class="row">
-						<div class="col-12 col-lg-10 col-xxl-5 d-flex">
+						<div class="col-12 col-lg-10 col-xxl-8 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
 									<div class="card-title mb-0">
@@ -260,7 +248,7 @@
 									</div>
 								</div>
 								<table class="table table-hover my-0">
-									<tr>
+									<tr style="height:50px">
 										<th>문의내용</th>
 										<th>문의날짜</th>
 										<th>답변내용</th>
@@ -271,14 +259,14 @@
 									<%
 										for(HashMap<String, Object> m : list) {
 									%>
-											<tr>
+											<tr style="height:60px">
 												<td><%=m.get("helpMemo")%></td>
 												<td><%=m.get("helpCreatedate")%></td>
 												<td>
 												<%
 													if(m.get("commentMemo") == null) {
 												%>
-														답변전
+														답변이 등록되지 않았습니다.
 												<%      
 													} else {
 												%>
@@ -291,7 +279,7 @@
 												<%
 													if(m.get("commentCreatedate") == null) {
 												%>
-														답변전   
+														답변이 등록되지 않았습니다.
 												<%      
 													} else {
 												%>
@@ -304,7 +292,7 @@
 												<%
 													if(m.get("commentMemo") == null) {
 												%>
-														<a href="<%=request.getContextPath()%>/help/updateHelpForm.jsp?helpNo=<%=m.get("helpNo")%>">수정</a>   
+														<a href="<%=request.getContextPath()%>/help/updateHelpForm.jsp?helpNo=<%=m.get("helpNo")%>" class="btn btn-outline-info">수정</a>   
 												<%      
 													} else {
 												%>
@@ -317,7 +305,7 @@
 												<%
 													if(m.get("commentMemo") == null) {
 												%>
-														<a href="<%=request.getContextPath()%>/help/deleteHelp.jsp?helpNo=<%=m.get("helpNo")%>">삭제</a>   
+														<a href="<%=request.getContextPath()%>/help/deleteHelp.jsp?helpNo=<%=m.get("helpNo")%>" class="btn btn-outline-danger">삭제</a>   
 												<%      
 													} else {
 												%>

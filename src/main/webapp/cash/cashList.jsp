@@ -181,18 +181,6 @@
 						</a>
 					</li>
 				</ul>
-
-				<div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div>
 			</div>
 		</nav>
 
@@ -317,85 +305,97 @@
 								</div>
 								<!-- 달력 출력 -->
 								<table class="table table-hover my-0">
-										<tr class="text-center table-active">
-											<th class="text-danger">일</th>
-											<th>월</th>
-											<th>화</th>
-											<th>수</th>
-											<th>목</th>
-											<th>금</th>
-											<th class="text-primary">토</th>
-										</tr>
-										<tr style="height:150px">
-										<%
-											for(int i=1; i<=totalTd; i++) {
-										%>
-												<td>
-										<%
-													int date = i-beginBlank;
-													// 토요일, 일요일 색 변경하기
-													Calendar colDate = Calendar.getInstance();
-													colDate.set(Calendar.YEAR, year);
-													colDate.set(Calendar.MONTH, month);
-													colDate.set(Calendar.DATE, date);
-													int coldate = colDate.get(Calendar.DAY_OF_WEEK);
-													if(date > 0 && date <= lastDate) {
-														if(coldate == 7) { // 토요일 파란색
-										%>
+									<tr class="text-center table-active">
+										<th class="text-danger">일</th>
+										<th>월</th>
+										<th>화</th>
+										<th>수</th>
+										<th>목</th>
+										<th>금</th>
+										<th class="text-primary">토</th>
+									</tr>
+									<tr style="height:150px">
+									<%
+										for(int i=1; i<=totalTd; i++) {
+									%>
+											<td style="width:150px">
+									<%
+												int date = i-beginBlank;
+												// 토요일, 일요일 색 변경하기
+												Calendar colDate = Calendar.getInstance();
+												colDate.set(Calendar.YEAR, year);
+												colDate.set(Calendar.MONTH, month);
+												colDate.set(Calendar.DATE, date);
+												int coldate = colDate.get(Calendar.DAY_OF_WEEK);
+												if(date > 0 && date <= lastDate) {
+													if(coldate == 7) { // 토요일 파란색
+									%>
 														<div>
 															<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
 																<span class="text-primary"><%=date%></span>
 															</a>
 														</div>
-										<%
-														} else if(coldate == 1) { // 일요일 빨간색
-										%>
+									<%
+													} else if(coldate == 1) { // 일요일 빨간색
+									%>
 														<div>
 															<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
 																<span class="text-danger"><%=date%></span>
 															</a>
 														</div>
-										<%
-														} else { // 평일 검은색
-										%>
+									<%
+													} else { // 평일 검은색
+									%>
 														<div>
 															<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
 																<span class="text-dark"><%=date%></span>
 															</a>
 														</div>
-										<%
-														}
-										%>
-														
-														<div>
-														<%
-															for(HashMap<String, Object> m : list) {
-																String cashDate = (String)(m.get("cashDate"));
-																if(Integer.parseInt(cashDate.substring(8)) == date) {
-														%>
-																	[<%=(String)(m.get("categoryKind"))%>]
-																	<%=(String)(m.get("categoryName"))%>
-																	<%=(Long)(m.get("cashPrice"))%>원
-																	<br>
-																	
-														<%
-												
-																}
-															}
-														%>
-														</div>
-										<%
+									<%
 													}
-										%>
-												</td>
-										<%		
-												if(i%7 == 0 && i != totalTd) {
-										%>
-													</tr><tr style="height:150px"> <!-- td 7개 만들고 테이블 줄바꿈 -->
-										<%
+									%>
+														
+													<div>
+									<%
+														for(HashMap<String, Object> m : list) {
+															String cashDate = (String)(m.get("cashDate"));
+															if(Integer.parseInt(cashDate.substring(8)) == date) {
+									%>
+																<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+									<%
+																	if(((String)(m.get("categoryKind"))).equals("수입")) {
+									%>
+																		<span class="text-primary">[<%=(String)(m.get("categoryKind"))%>]</span>
+									<%
+																	} else {
+									%>
+																		<span class="text-success">[<%=(String)(m.get("categoryKind"))%>]</span>
+									<%
+																	}
+									%>
+																	<span class="text-dark"><%=(String)(m.get("categoryName"))%></span>
+																	<span class="text-dark"><%=(Long)(m.get("cashPrice"))%>원</span>
+																	<br>
+																</a>
+																
+									<%
+											
+															}
+														}
+									%>
+													</div>
+									<%
 												}
-											}
-										%>
+									%>
+											</td>
+									<%		
+												if(i%7 == 0 && i != totalTd) {
+									%>
+													</tr><tr style="height:150px"> <!-- td 7개 만들고 테이블 줄바꿈 -->
+									<%
+												}
+										}
+									%>
 									</tr>
 								</table>
 							</div>
