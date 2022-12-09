@@ -77,13 +77,14 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="../resorces/img/icons/icon-48x48.png" />
+	<link rel="shortcut icon" href="../resorces/img/icons/icon1-48x48.png" />
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 	<title>cashList</title>
 	<link href="../resorces/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 
 <body>
@@ -100,32 +101,32 @@
 					</li>
 
 					<li class="sidebar-item active">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/cashList.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">가계부 리스트</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/help/helpList.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">고객센터</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">비밀번호 변경</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/deleteMemberForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">회원탈퇴</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/logout.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">로그아웃</span>
 						</a>
 					</li>
 
@@ -135,31 +136,31 @@
 					
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/adminMain.jsp">
-							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Admin page</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">관리자 페이지</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/noticeList.jsp">
-							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage announcements</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">공지사항 관리</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/categoryList.jsp">
-							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Manage category</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">카테고리 관리</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/memberList.jsp">
-							<i class="align-middle" data-feather="grid"></i> <span class="align-middle">Manage member</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">멤버 관리</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/helpListAll.jsp">
-							<i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Manage customer service</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">문의사항 관리</span>
 						</a>
 					</li>
 
@@ -170,13 +171,13 @@
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="charts-chartjs.html">
-							<i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Charts</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="maps-google.html">
-							<i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Maps</span>
 						</a>
 					</li>
 				</ul>
@@ -277,7 +278,7 @@
 							</a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-								<span class="text-dark">[<%=loginMember.getMemberId()%>(<%=loginMember.getMemberName()%>)]</span>
+								<span class="text-dark"><%=loginMember.getMemberId()%>(<%=loginMember.getMemberName()%>)</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
@@ -296,16 +297,16 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+					<h1 class="h2 mb-3"><strong>MyCashBook</strong></h1>
 
 					
-					<div class="text-center">
-						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&#8701;이전달</a>
+					<h1 class="text-center h3">
+						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>"><i class='far fa-caret-square-left' style='font-size:24px'></i></a>
 						
-						<%=year%>년 <%=month+1%>월
+						<span><%=year%>년 <%=month+1%>월</span>
 						
-						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>">다음달&#8702;</a>
-					</div>
+						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>"><i class='far fa-caret-square-right' style='font-size:24px'></i></a>
+					</h1>
 
 
 					<div class="row">

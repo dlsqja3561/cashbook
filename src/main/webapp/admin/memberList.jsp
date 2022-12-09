@@ -47,7 +47,7 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="../resorces/img/icons/icon-48x48.png" />
+	<link rel="shortcut icon" href="../resorces/img/icons/icon1-48x48.png" />
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -70,33 +70,33 @@
 						Member menu
 					</li>
 
-					<li class="sidebar-item active">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/cashList.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">가계부 리스트</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/help/helpList.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">고객센터</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">비밀번호 변경</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/deleteMemberForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">회원탈퇴</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="#">
-							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/logout.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">로그아웃</span>
 						</a>
 					</li>
 
@@ -106,31 +106,31 @@
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/adminMain.jsp">
-							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Admin page</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">관리자 페이지</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/noticeList.jsp">
-							<i class="align-middle" data-feather="square"></i> <span class="align-middle">Manage announcements</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">공지사항 관리</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/categoryList.jsp">
-							<i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Manage category</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">카테고리 관리</span>
 						</a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/memberList.jsp">
-							<i class="align-middle" data-feather="grid"></i> <span class="align-middle">Manage member</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">멤버 관리</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/helpListAll.jsp">
-							<i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Manage customer service</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">문의사항 관리</span>
 						</a>
 					</li>
 
@@ -141,13 +141,13 @@
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="charts-chartjs.html">
-							<i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Charts</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="maps-google.html">
-							<i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Maps</span>
 						</a>
 					</li>
 				</ul>
@@ -244,18 +244,18 @@
 						<!-- ------------------------------------------------------------------------ -->
 						<li class="nav-item dropdown">
 							<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
-								<i class="align-middle" data-feather="settings"></i>
+								<i class="align-middle" data-feather="#"></i>
 							</a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-								<span class="text-dark">[<%=loginMember.getMemberId()%>(<%=loginMember.getMemberName()%>)]</span>
+								<span class="text-dark"><%=loginMember.getMemberId()%>(<%=loginMember.getMemberName()%>)</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="<%=request.getContextPath()%>/admin/adminMain.jsp"><i class="align-middle me-1" data-feather="pie-chart"></i> 관리자 페이지</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="#"></i> Profile</a>
+								<a class="dropdown-item" href="<%=request.getContextPath()%>/admin/adminMain.jsp"><i class="align-middle me-1" data-feather="#"></i> 관리자 페이지</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="<%=request.getContextPath()%>/updateMemberForm.jsp"><i class="align-middle me-1" data-feather="settings"></i> 비밀번호 변경</a>
-								<a class="dropdown-item" href="<%=request.getContextPath()%>/deleteMemberForm.jsp"><i class="align-middle me-1" data-feather="help-circle"></i> 회원탈퇴</a>
+								<a class="dropdown-item" href="<%=request.getContextPath()%>/updateMemberForm.jsp"><i class="align-middle me-1" data-feather="#"></i> 비밀번호 변경</a>
+								<a class="dropdown-item" href="<%=request.getContextPath()%>/deleteMemberForm.jsp"><i class="align-middle me-1" data-feather="#"></i> 회원탈퇴</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="<%=request.getContextPath()%>/logout.jsp"> 로그아웃</a>
 							</div>
@@ -266,17 +266,17 @@
 
 			<main class="content">
 				<div class="container-fluid p-5">
-					<h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+					<h1 class="h3 mb-3"><strong>멤버관리</strong></h1>
 					<div class="row">
 						<div class="col-12 col-lg-10 col-xxl-7 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-									<h5 class="card-title mb-0">멤버</h5>
+									<h5 class="card-title mb-0">Member List</h5>
 								</div>
 								<div>
 								<!-- memberList contents ... -->
 									<table class="table table-hover my-0">
-										<tr>
+										<tr class="h5">
 											<th>멤버번호</th>
 											<th>아이디</th>
 											<th>레벨</th>
@@ -306,7 +306,7 @@
 								</div>
 								
 								<!-- 공지 페이징 -->
-								<div>
+								<div class="text-center">
 									<a href="<%=request.getContextPath()%>/admin/memberList.jsp?currentPage=1"><i class='fas fa-angle-double-left'></i>&nbsp;</a>
 								<%
 									if(currentPage > 1) {
@@ -319,7 +319,7 @@
 								<%
 									}
 								%>
-									<span>&nbsp;[<%=currentPage%> / <%=memberLastPage%>]&nbsp;</span>
+									<span>&nbsp;<%=currentPage%> / <%=memberLastPage%>&nbsp;</span>
 								<%
 									if(currentPage < memberLastPage) {
 								%>

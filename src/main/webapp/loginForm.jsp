@@ -46,7 +46,7 @@
 	<meta name="author" content="AdminKit">
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="./resorces/img/icons/favicon-32x32.png" />
+	<link rel="shortcut icon" href="./resorces/img/icons/icon1-48x48.png" />
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 	<title>loginForm</title>
 	<link href="./resorces/css/app.css" rel="stylesheet">
@@ -91,7 +91,7 @@
 						<%
 							}
 						%>
-							<span>&nbsp;[<%=currentPage%> / <%=lastPage%>]&nbsp;</span>
+							<span>&nbsp;<%=currentPage%> / <%=lastPage%>&nbsp;</span>
 						<%
 							if(currentPage < lastPage) {
 						%>
@@ -153,8 +153,8 @@
 											</label>
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn  btn-primary">로그인</button>
-											<a href="<%=request.getContextPath()%>/insertMemberForm.jsp" class="btn  btn-primary">회원가입</a>
+											<button type="submit" class="btn btn-primary">로그인</button>
+											<a href="<%=request.getContextPath()%>/insertMemberForm.jsp" class="btn btn-primary">회원가입</a>
 										</div>
 									</form>
 								</div>
