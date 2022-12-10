@@ -3,6 +3,8 @@
 <%@ page import="dao.*"%>
 <%@ page import="vo.*"%>
 <%
+	//한글처리 utf-8 인코딩
+	request.setCharacterEncoding("utf-8");
 	// Controller : seesion, request
 	
 	// 로그인이 안되어 있을때는 접근불가 로그인 폼으로
@@ -12,7 +14,12 @@
 	}
 	// seesion에 저장된 멤버(현재 로그인 사용자)
 	Member loginMember = (Member)session.getAttribute("loginMember");
-
+	String loginMemberName = loginMember.getMemberName();
+	
+	if(request.getParameter("memberName") != null) { // 멤버 이름 변경후 넘어온값
+		loginMemberName = request.getParameter("memberName");
+	}
+	
 	// request 년, 월
 	int year = 0;
 	int month = 0;
@@ -115,6 +122,12 @@
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberForm.jsp">
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">비밀번호 변경</span>
+						</a>
+					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberNameForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">이름 변경</span>
 						</a>
 					</li>
 
@@ -266,7 +279,7 @@
 							</a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-								<span class="text-dark"><%=loginMember.getMemberId()%>(<%=loginMember.getMemberName()%>)</span>
+								<span class="text-dark"><%=loginMemberName%>(<%=loginMember.getMemberId()%>)</span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Profile</a>

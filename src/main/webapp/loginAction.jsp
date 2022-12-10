@@ -3,6 +3,8 @@
 <%@ page import = "dao.*" %>
 <%@ page import = "vo.*" %>
 <%
+	//한글처리 utf-8 인코딩
+	request.setCharacterEncoding("utf-8");
 	// 입력값 없으면 loginForm 으로
 	if(request.getParameter("memberId")==null 
 		|| request.getParameter("memberPw")==null 

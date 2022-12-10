@@ -314,6 +314,34 @@ public class MemberDao {
 		return row;
 	}
 	
+	// 비밀번호 수정 
+		public int updateName(String memberId, String memberName) {
+			int row = 0;
+			DBUtil dbUtil = new DBUtil();
+			Connection conn = null;
+			PreparedStatement stmt = null;
+			String sql = "UPDATE member SET member_name = ? WHERE member_id = ?";
+			try {
+				conn = dbUtil.getConnection();
+				stmt = conn.prepareStatement(sql);
+				stmt.setString(1, memberName);
+				stmt.setString(2, memberId);
+				row = stmt.executeUpdate();
+				if(row == 1) {
+					System.out.println("변경 성공---");
+				} 
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					dbUtil.close(null, stmt, conn);
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return row;
+		}
+	
 	// 회원탈퇴
 	public int deleteMember(Member member) {
 		int row = 0;

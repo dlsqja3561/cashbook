@@ -2,7 +2,9 @@
 <%@ page import="dao.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="vo.*"%>
-<%
+<%		
+	//한글처리 utf-8 인코딩
+	request.setCharacterEncoding("utf-8");
 	// 로그인이 되어 있을때는 접근불가
 	if(session.getAttribute("loginMember") != null) {
 		response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
