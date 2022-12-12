@@ -77,6 +77,12 @@
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">가계부 리스트</span>
 						</a>
 					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/cashYearSumList.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">년도별 수입/지출 합계</span>
+						</a>
+					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/help/helpList.jsp">
@@ -133,23 +139,6 @@
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/helpListAll.jsp">
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">문의사항 관리</span>
-						</a>
-					</li>
-
-
-					<li class="sidebar-header">
-						Plugins / Addons
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Charts</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Maps</span>
 						</a>
 					</li>
 				</ul>

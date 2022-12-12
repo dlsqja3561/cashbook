@@ -117,10 +117,10 @@
 	<main class="d-flex w-100">
 		<div class="container d-flex flex-column">
 			<div class="row pt-5">
-				<div class="col-sm-10 col-md-8 col-lg-5 mx-auto d-table h-100">
+				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
-						<div class="text-center mt-4">
-							<h1 class="h2">Welcome back</h1>
+						<div class="text-center mt-2">
+							<h1 class="h2">로그인</h1>
 							<%
 								// 로그인 정보입력 없으면 msg1 출력
 								if(msg1 != null){
@@ -129,6 +129,7 @@
 							<%
 								}
 							%>
+							<div class="p-1 bg-primary rounded"></div>
 						</div>
 						<div class="card">
 							<div class="card-body">
