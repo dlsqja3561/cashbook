@@ -36,7 +36,6 @@
 					<div class="d-table-cell align-middle">
 						<div class="text-center mt-4">
 							<h1 class="h2">회원가입</h1>
-							<div class="p-2 bg-primary rounded"></div>
 							<%
 								// 정보입력 없으면, id 중복시 msg 출력
 								if(msg != null){
@@ -46,7 +45,7 @@
 								}
 							%>
 						</div>
-
+						<div class="p-1 bg-primary rounded"></div>
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">

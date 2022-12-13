@@ -48,17 +48,17 @@
 								}
 							%>
 						</div>
-
+						<div class="p-1 bg-primary rounded"></div>
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
 									<form action="<%=request.getContextPath()%>/admin/insertCategoryAction.jsp" method="post">
 										<div class="mb-1">
-											<label class="form-check-label">수입 / 지출</label>
+											<label class="form-check-label">수입 / 지출 선택</label>
 										</div>
 										<div class="mb-3">
 											<input class="form-check-input" type="radio" id="radio1" name="categoryKind" value="수입">
-											<label class="form-check-label" for="radio1">수입</label>
+											<label class="form-check-label" for="radio1">수입</label>&nbsp;&nbsp;
 											<input class="form-check-input" type="radio" id="radio2" name="categoryKind" value="지출">
 											<label class="form-check-label" for="radio2">지출</label>
 										</div>

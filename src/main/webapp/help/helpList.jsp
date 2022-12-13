@@ -77,6 +77,12 @@
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">비밀번호 변경</span>
 						</a>
 					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberNameForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">이름 변경</span>
+						</a>
+					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/deleteMemberForm.jsp">

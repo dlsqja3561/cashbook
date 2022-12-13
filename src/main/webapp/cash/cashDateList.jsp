@@ -268,7 +268,7 @@
 									<input type="hidden" name="date" value="<%=date%>">
 									<table class="table table-hover my-0">
 										<%
-											// 정보입력 없으면, id 중복시 msg1 출력
+											// 입력 없으면 msg 출력
 											if(msg != null){
 										%>
 												 <%=msg%>

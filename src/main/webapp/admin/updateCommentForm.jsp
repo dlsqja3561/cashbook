@@ -46,7 +46,7 @@
 						<div class="text-center mt-4">
 							<h1 class="h2">답변내용 수정하기</h1>
 							<%
-								// msg 출력 
+								// 입력 없으면 msg 출력 
 								if(msg != null){
 							%>
 									 <%=msg%>
@@ -54,7 +54,7 @@
 								}
 							%>
 						</div>
-
+						<div class="p-1 bg-primary rounded"></div>
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">

@@ -81,7 +81,7 @@
 						<div class="text-center mt-1">
 							<h1 class="h2">문의답변 입력하기</h1>
 							<%
-								// 답변입력 없으면 msg 출력
+								// 입력 없으면 msg 출력
 								if(msg != null){
 							%>
 									 <%=msg%>
@@ -89,7 +89,7 @@
 								}
 							%>
 						</div>
-
+						<div class="p-1 bg-primary rounded"></div>
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
