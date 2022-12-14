@@ -49,21 +49,21 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form action="<%=request.getContextPath()%>/insertMemberAction.jsp" method="post">
+									<form id="form" action="<%=request.getContextPath()%>/insertMemberAction.jsp" method="post">
 										<div class="mb-3">
 											<label class="form-label">ID</label>
-											<input class="form-control form-control-lg" type="text" name="memberId" placeholder="Enter your id" />
+											<input class="form-control form-control-lg" type="text" id="memberId" name="memberId" placeholder="Enter your id" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" name="memberPw" placeholder="Enter your password" />
+											<input class="form-control form-control-lg" type="password" id="memberPw" name="memberPw" placeholder="Enter your password" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Name</label>
-											<input class="form-control form-control-lg" type="text" name="memberName" placeholder="Enter your name" />
+											<input class="form-control form-control-lg" type="text" id="memberName" name="memberName" placeholder="Enter your name" />
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">회원가입</button>
+											<button type="button" id="btn" class="btn btn-lg btn-primary">회원가입</button>
 										</div>
 									</form>
 								</div>
@@ -74,6 +74,39 @@
 			</div>
 		</div>
 	</main>
+	<script>
+		let btn = document.querySelector('#btn');
+		btn.addEventListener('click', function(){
+			// 디버깅
+			console.log('btn click!');
+			
+			// id 폼 유효성 검사
+			let memberId = document.querySelector('#memberId');
+			if(memberId.value == '') {
+				alert('ID를 입력해주세요');
+				memberId.focus();
+				return;
+			}
+			
+			// pw 폼 유효성 검사
+			let memberPw = document.querySelector('#memberPw');
+			if(memberPw.value == '') {
+				alert('PASSWORD를 입력해주세요');
+				memberPw.focus();
+				return;
+			}
+			
+			// name 폼 유효성 검사
+			let memberName = document.querySelector('#memberName');
+			if(memberName.value == '') {
+				alert('NAME을 입력해주세요');
+				memberName.focus();
+				return;
+			}
+			
+			let form = document.querySelector('#form');
+			form.submit(); 
+		})
+	</script>
 </body>
-
 </html>

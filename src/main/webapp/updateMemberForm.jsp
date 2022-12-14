@@ -49,21 +49,21 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form action="<%=request.getContextPath()%>/updateMemberAction.jsp" method="post">
+									<form id="form" action="<%=request.getContextPath()%>/updateMemberAction.jsp" method="post">
 										<div class="mb-3">
 											<label class="form-label">현재 비밀번호</label>
-											<input class="form-control form-control-lg" type="password" name="memberPw" placeholder="Enter your password" />
+											<input class="form-control form-control-lg" type="password" id="memberPw" name="memberPw" placeholder="Enter your password">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">변경할 비밀번호</label>
-											<input class="form-control form-control-lg" type="password" name="newPw" placeholder="Enter your new password" />
+											<input class="form-control form-control-lg" type="password" id="newPw" name="newPw" placeholder="Enter your new password">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">변경할 비밀번호 확인</label>
-											<input class="form-control form-control-lg" type="password" name="newPwCk" placeholder="Enter your new password" />
+											<input class="form-control form-control-lg" type="password" id="newPwCk" name="newPwCk" placeholder="Enter your new password">
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">변경하기</button>
+											<button type="button" id="btn" class="btn btn-lg btn-primary">변경하기</button>
 										</div>
 									</form>
 								</div>
@@ -74,6 +74,31 @@
 			</div>
 		</div>
 	</main>
+	<script>
+		let btn = document.querySelector('#btn');
+		btn.addEventListener('click', function(){
+			// 디버깅
+			console.log('btn click!');
+			
+			// 현재 pw 폼 유효성 검사
+			let memberPw = document.querySelector('#memberPw');
+			if(memberPw.value == '') {
+				alert('PASSWORD를 입력해주세요');
+				memberPw.focus();
+				return;
+			}
+			// 변경할 pw 폼 유효성 검사
+			let newPw = document.querySelector('#newPw');
+			let newPwCk = document.querySelector('#newPwCk');
+			if(newPw.value == '' || newPw.value != newPwCk.value) {
+				alert('변경할 PASSWORD를 확인하세요');
+				newPw.focus();
+				return;
+			}
+			
+			let form = document.querySelector('#form');
+			form.submit(); 
+		})
+	</script>
 </body>
-
 </html>

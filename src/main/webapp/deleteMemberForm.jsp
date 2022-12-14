@@ -50,16 +50,16 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form action="<%=request.getContextPath()%>/deleteMemberAction.jsp" method="post">
+									<form id="form" action="<%=request.getContextPath()%>/deleteMemberAction.jsp" method="post">
 										<div class="mb-5 text-center">
 											<h1 class="h3"><%=loginMember.getMemberId()%>(<%=loginMember.getMemberName()%>)님 탈퇴 하시겠습니까?</h1>
 										</div>
 										<div class="mb-3">
 											<label class="form-label">비밀번호 입력</label>
-											<input class="form-control form-control-lg" type="password" name="memberPw" placeholder="Enter your password" />
+											<input class="form-control form-control-lg" type="password" id="memberPw" name="memberPw" placeholder="Enter your password">
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">탈퇴하기</button>
+											<button type="button" id="btn" class="btn btn-lg btn-primary">탈퇴하기</button>
 										</div>
 									</form>
 								</div>
@@ -70,6 +70,22 @@
 			</div>
 		</div>
 	</main>
+	<script>
+		let btn = document.querySelector('#btn');
+		btn.addEventListener('click', function(){
+			// 디버깅
+			console.log('btn click!');
+			
+			// pw 폼 유효성 검사
+			let memberPw = document.querySelector('#memberPw');
+			if(memberPw.value == '') {
+				alert('비밀번호를 입력해주세요');
+				memberPw.focus();
+				return;
+			}
+			let form = document.querySelector('#form');
+			form.submit(); 
+		})
+	</script>
 </body>
-
 </html>

@@ -73,7 +73,7 @@
 							<div class="card-body">
 								<div class="m-sm-4">
 									<!-- cash 수정 폼 -->
-									<form action="<%=request.getContextPath()%>/cash/updateCashAction.jsp" method="post">
+									<form id="form" action="<%=request.getContextPath()%>/cash/updateCashAction.jsp" method="post">
 										<input type="hidden" name="year" value="<%=year%>">
 										<input type="hidden" name="month" value="<%=month%>">
 										<input type="hidden" name="date" value="<%=date%>">
@@ -106,17 +106,17 @@
 												<tr>
 													<td>cashPrice</td>
 													<td>
-														<input type="text" name="cashPrice" class="form-control form-control-lg" value="<%=cashPrice%>">
+														<input type="text" id="cashPrice" name="cashPrice" class="form-control form-control-lg" value="<%=cashPrice%>">
 													</td>
 												</tr>
 												<tr>
 													<td>cashMemo</td>
 													<td>
-														<textarea rows="5" cols="70" name="cashMemo" class="form-control form-control-lg"><%=cashMemo%></textarea>
+														<textarea rows="5" id="cashMemo" cols="70" name="cashMemo" class="form-control form-control-lg"><%=cashMemo%></textarea>
 													</td>
 												</tr>
 											</table>
-											<button type="submit" class="btn btn-lg btn-primary">수정완료</button>
+											<button type="button" id="btn" class="btn btn-lg btn-primary">수정완료</button>
 										</div>
 									</form>
 								</div>
@@ -127,6 +127,31 @@
 			</div>
 		</div>
 	</main>
+	<script>
+		let btn = document.querySelector('#btn');
+		btn.addEventListener('click', function(){
+			// 디버깅
+			console.log('btn click!');
+			
+			// price 폼 유효성 검사
+			let cashPrice = document.querySelector('#cashPrice');
+			if(cashPrice.value == '') {
+				alert('cashPrice를 입력해주세요');
+				cashPrice.focus();
+				return;
+			}
+			
+			// memo 폼 유효성 검사
+			let cashMemo = document.querySelector('#cashMemo');
+			if(cashMemo.value == '') {
+				alert('cashMemo를 입력해주세요');
+				cashMemo.focus();
+				return;
+			}
+			
+			let form = document.querySelector('#form');
+			form.submit(); 
+		})
+	</script>
 </body>
-
 </html>

@@ -262,7 +262,7 @@
 								</div>
 								<!-- cash 입력 폼 -->
 								<div class="text-center">
-								<form action="<%=request.getContextPath()%>/cash/insertCashAction.jsp" method="post">
+								<form id="form" action="<%=request.getContextPath()%>/cash/insertCashAction.jsp" method="post">
 									<input type="hidden" name="year" value="<%=year%>">
 									<input type="hidden" name="month" value="<%=month%>">
 									<input type="hidden" name="date" value="<%=date%>">
@@ -278,7 +278,7 @@
 										<tr>
 											<td>categoryNo</td>
 											<td>
-												<select name = "categoryNo" class="form-select form-select-lg">
+												<select name="categoryNo" class="form-select form-select-lg">
 													<%
 														// category 목록 출력
 														for(Category c : categoryList) {
@@ -301,17 +301,17 @@
 										<tr>
 											<td>cashPrice</td>
 											<td>
-												<input type="text" name="cashPrice" class="form-control form-control-lg">
+												<input type="text" id="cashPrice" name="cashPrice" class="form-control form-control-lg">
 											</td>
 										</tr>
 										<tr>
 											<td>cashMemo</td>
 											<td>
-												<textarea rows="3" cols="50" name="cashMemo" class="form-control form-control-lg"></textarea>
+												<textarea rows="3" cols="50" id="cashMemo" name="cashMemo" class="form-control form-control-lg"></textarea>
 											</td>
 										</tr>
 									</table>
-									<button type="submit" class="btn btn-primary">입력</button>
+									<button type="button" id="btn" class="btn btn-primary">입력하기</button>
 								</form>
 								</div>
 							</div>
@@ -390,6 +390,31 @@
 			</footer>
 		</div>
 	</div>
-
+	<script>
+		let btn = document.querySelector('#btn');
+		btn.addEventListener('click', function(){
+			// 디버깅
+			console.log('btn click!');
+			
+			// price 폼 유효성 검사
+			let cashPrice = document.querySelector('#cashPrice');
+			if(cashPrice.value == '') {
+				alert('cashPrice를 입력해주세요');
+				cashPrice.focus();
+				return;
+			}
+			
+			// memo 폼 유효성 검사
+			let cashMemo = document.querySelector('#cashMemo');
+			if(cashMemo.value == '') {
+				alert('cashMemo를 입력해주세요');
+				cashMemo.focus();
+				return;
+			}
+			
+			let form = document.querySelector('#form');
+			form.submit(); 
+		})
+	</script>
 </body>
 </html>

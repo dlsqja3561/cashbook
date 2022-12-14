@@ -62,14 +62,14 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form action="<%=request.getContextPath()%>/admin/updateNoticeAction.jsp" method="post">
+									<form id="form" action="<%=request.getContextPath()%>/admin/updateNoticeAction.jsp" method="post">
 										<input type="hidden" name="noticeNo" value="<%=noticeNo%>">
 										<div class="mb-3">
 											<label class="form-label">공지내용</label>
-											<textarea rows="6" cols="70" name="noticeMemo" class="form-control form-control-lg"><%=notice.getNoticeMemo()%></textarea>
+											<textarea rows="6" cols="70" id="noticeMemo" name="noticeMemo" class="form-control form-control-lg"><%=notice.getNoticeMemo()%></textarea>
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">수정하기</button>
+											<button type="button" id="btn" class="btn btn-lg btn-primary">수정하기</button>
 										</div>
 									</form>
 								</div>
@@ -80,6 +80,23 @@
 			</div>
 		</div>
 	</main>
+	<script>
+		let btn = document.querySelector('#btn');
+		btn.addEventListener('click', function(){
+			// 디버깅
+			console.log('btn click!');
+			
+			// id 폼 유효성 검사
+			let noticeMemo = document.querySelector('#noticeMemo');
+			if(noticeMemo.value == '') {
+				alert('공지내용을 입력해주세요');
+				noticeMemo.focus();
+				return;
+			}
+			
+			let form = document.querySelector('#form');
+			form.submit(); 
+		})
+	</script>
 </body>
-
 </html>

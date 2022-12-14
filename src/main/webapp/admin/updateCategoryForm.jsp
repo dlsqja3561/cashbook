@@ -61,7 +61,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form action="<%=request.getContextPath()%>/admin/updateCategoryAction.jsp" method="post">
+									<form id="form" action="<%=request.getContextPath()%>/admin/updateCategoryAction.jsp" method="post">
 										<div class="mb-3">
 											<label class="form-label">카테고리 번호</label>
 											<input class="form-control form-control-lg" type="text" name="categoryNo" value="<%=category.getCategoryNo()%>" readonly="readonly">
@@ -72,10 +72,10 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">카테고리 이름</label>
-											<input class="form-control form-control-lg" type="text" name="categoryName" value="<%=category.getCategoryName()%>">
+											<input class="form-control form-control-lg" type="text" id="categoryName" name="categoryName" value="<%=category.getCategoryName()%>">
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">수정하기</button>
+											<button type="button" id="btn" class="btn btn-lg btn-primary">수정하기</button>
 										</div>
 									</form>
 								</div>
@@ -86,6 +86,23 @@
 			</div>
 		</div>
 	</main>
+	<script>
+		let btn = document.querySelector('#btn');
+		btn.addEventListener('click', function(){
+			// 디버깅
+			console.log('btn click!');
+			
+			// categoryName 폼 유효성 검사
+			let categoryName = document.querySelector('#categoryName');
+			if(categoryName.value == '') {
+				alert('카테고리 이름을 입력해주세요');
+				categoryName.focus();
+				return;
+			}
+			
+			let form = document.querySelector('#form');
+			form.submit(); 
+		})
+	</script>
 </body>
-
 </html>

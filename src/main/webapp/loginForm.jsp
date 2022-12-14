@@ -135,14 +135,14 @@
 							<div class="card-body">
 								<div class="m-sm-5">
 									<!-- 로그인 폼 -->
-									<form action="<%=request.getContextPath()%>/loginAction.jsp" method="post">
+									<form id="form" action="<%=request.getContextPath()%>/loginAction.jsp" method="post">
 										<div class="mb-3">
 											<label class="form-label">ID</label>
-											<input class="form-control form-control-lg" type="text" name="memberId" value="admin">
+											<input class="form-control form-control-lg" type="text" id="memberId" name="memberId" value="admin">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" name="memberPw" value="1234">
+											<input class="form-control form-control-lg" type="password" id="memberPw" name="memberPw" value="1234">
 											<small>
 												<a href="loginForm.jsp">Forgot password?</a>
 											</small>
@@ -156,7 +156,7 @@
 											</label>
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-primary">로그인</button>
+											<button type="button" id="btn" class="btn btn-primary">로그인</button>
 											<a href="<%=request.getContextPath()%>/insertMemberForm.jsp" class="btn btn-primary">회원가입</a>
 										</div>
 									</form>
@@ -168,7 +168,31 @@
 			</div>
 		</div>
 	</main>
-
+	<script>
+		let btn = document.querySelector('#btn');
+		btn.addEventListener('click', function(){
+			// 디버깅
+			console.log('btn click!');
+			
+			// memberId 폼 유효성 검사
+			let memberId = document.querySelector('#memberId');
+			if(memberId.value == '') {
+				alert('ID를 입력해주세요');
+				memberId.focus();
+				return;
+			}
+			
+			// memberPw 폼 유효성 검사
+			let memberPw = document.querySelector('#memberPw');
+			if(memberPw.value == '') {
+				alert('PASSWORD를 입력해주세요');
+				memberPw.focus();
+				return;
+			}
+			let form = document.querySelector('#form');
+			form.submit(); 
+		})
+	</script>
 </body>
 
 </html>
