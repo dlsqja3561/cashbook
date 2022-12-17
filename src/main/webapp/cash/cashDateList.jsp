@@ -74,6 +74,18 @@
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">가계부 리스트</span>
 						</a>
 					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/statsListYear.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">년도별 수입/지출 통계</span>
+						</a>
+					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/statsListMonth.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">월별 수입/지출 통계</span>
+						</a>
+					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/help/helpList.jsp">
@@ -81,9 +93,53 @@
 						</a>
 					</li>
 
+					<li class="sidebar-header">
+						Admin menu
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/adminMain.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">관리자 페이지</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/noticeList.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">공지사항 관리</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/categoryList.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">카테고리 관리</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/memberList.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">멤버 관리</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/helpListAll.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">문의사항 관리</span>
+						</a>
+					</li>
+					
+					<li class="sidebar-header">
+						Account management
+					</li>
+					
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberForm.jsp">
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">비밀번호 변경</span>
+						</a>
+					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberNameForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">이름 변경</span>
 						</a>
 					</li>
 
@@ -96,57 +152,6 @@
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/logout.jsp">
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">로그아웃</span>
-						</a>
-					</li>
-
-					<li class="sidebar-header">
-						Admin menu
-					</li>
-					
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/adminMain.jsp">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Admin page</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/noticeList.jsp">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Manage announcements</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/categoryList.jsp">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Manage category</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/memberList.jsp">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Manage member</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/helpListAll.jsp">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Manage customer service</span>
-						</a>
-					</li>
-
-
-					<li class="sidebar-header">
-						Plugins / Addons
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Charts</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">Maps</span>
 						</a>
 					</li>
 				</ul>
@@ -258,7 +263,7 @@
 						<div class="col-12 col-lg-10 col-xxl-5 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
-									<h5 class="card-title mb-0">Calendar</h5>
+									<h5 class="card-title mb-0">Insert Category</h5>
 								</div>
 								<!-- cash 입력 폼 -->
 								<div class="text-center">

@@ -60,8 +60,14 @@
 					</li>
 					
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/cashYearSumList.jsp">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">년도별 수입/지출 합계</span>
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/statsListYear.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">년도별 수입/지출 통계</span>
+						</a>
+					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/statsListMonth.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">월별 수입/지출 통계</span>
 						</a>
 					</li>
 
@@ -71,28 +77,10 @@
 						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberForm.jsp">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">비밀번호 변경</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<%=request.getContextPath()%>/deleteMemberForm.jsp">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">회원탈퇴</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="<%=request.getContextPath()%>/logout.jsp">
-							<i class="align-middle" data-feather="#"></i> <span class="align-middle">로그아웃</span>
-						</a>
-					</li>
-
 					<li class="sidebar-header">
 						Admin menu
 					</li>
-
+					
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/adminMain.jsp">
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">관리자 페이지</span>
@@ -120,6 +108,34 @@
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/admin/helpListAll.jsp">
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">문의사항 관리</span>
+						</a>
+					</li>
+					
+					<li class="sidebar-header">
+						Account management
+					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">비밀번호 변경</span>
+						</a>
+					</li>
+					
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/updateMemberNameForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">이름 변경</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/deleteMemberForm.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">회원탈퇴</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="<%=request.getContextPath()%>/logout.jsp">
+							<i class="align-middle" data-feather="#"></i> <span class="align-middle">로그아웃</span>
 						</a>
 					</li>
 				</ul>
