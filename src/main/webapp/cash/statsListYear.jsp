@@ -2,21 +2,28 @@
 <%@ page import="vo.*"%>
 <%@ page import="dao.*"%>
 <%@ page import="java.util.*" %>
+<%@ page import="java.text.*" %>
 <%
 	//한글처리 utf-8 인코딩
 	request.setCharacterEncoding("utf-8");
-	// Controller
-	// 로그인 안되어 있거나 level 0인 멤버
-	Member loginMember = (Member)session.getAttribute("loginMember");
-	if(loginMember == null || loginMember.getMemberLevel() < 1) {
+	// Controller : seesion, request
+	
+	// 로그인이 안되어 있을때는 접근불가 로그인 폼으로
+	if(session.getAttribute("loginMember") == null) {
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
 	}
+	// seesion에 저장된 멤버(현재 로그인 사용자)
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		String memberId = loginMember.getMemberId();
 	
 	// Model 호출
-	CategoryDao categoryDao = new CategoryDao();
-	ArrayList<Category> categoryList = categoryDao.selectCategoryListByAdmin();
+	StatsDao statsDao = new StatsDao();
+	ArrayList<HashMap<String, Object>> list = statsDao.selectSumAvgByYear(memberId);
 
+	// 숫자 콤마 포맷
+	DecimalFormat df = new DecimalFormat("###,###");
+	
 	// View
 %>
 
@@ -242,39 +249,40 @@
 
 			<main class="content">
 				<div class="container-fluid p-5">
-					<h1 class="h3 mb-3"><strong>카테고리 관리</strong></h1>
+					<h1 class="h3 mb-3"><strong>년도별 수입/지출 합계</strong></h1>
 					<div class="row">
 						<div class="col-12 col-lg-10 col-xxl-7 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
 									<div class="card-title mb-0">
-										<span>년도별 수입 합계</span>
+										<span>통계 현황</span>
 									</div>
 								</div>
 								<div>
 									<!-- categoryList contents ... -->
-									<table class="table table-hover my-0">
-										<tr class="h5">
-											<th>ㅇ</th>
-											<th>ㅇ</th>
-											<th>ㅇ</th>
-											<th>ㅇ</th>
-											<th>ㅇ</th>
-											<th>ㅇ</th>
-											<th>ㅇ</th>
+									<table class="table table-hover my-0 ">
+										<tr class="h5 text-center">
+											<th>년도</th>
+											<th>수입횟수</th>
+											<th>수입합계</th>
+											<th>수입평균</th>
+											<th>지출횟수</th>
+											<th>지출합계</th>
+											<th>지출평균</th>
 										</tr>
-										<!-- 모델데이터 cashyearSumList 출력 -->
 										<%
-											for(Category c : categoryList) {
+											for(HashMap<String, Object> m : list) {
 										%>
-												<tr>
-													<td><%=%></td>
-													<td><%=%></td>
-													<td><%=%></td>
-													<td><%=%></td>
-													<td><%=%></td>
-													<td><%=%></td>
-													<td><%=%></td>
+												<tr class="text-center">
+													<td>
+														<a href="<%=request.getContextPath()%>/cash/statsListMonth.jsp?year=<%=m.get("year")%>"><%=m.get("year")%>년</a>
+													</td>
+													<td><%=df.format(m.get("cntImport"))%>회</td>
+													<td><%=df.format(m.get("sumImport"))%>원</td>
+													<td><%=df.format(m.get("avgImport"))%>원</td>
+													<td><%=df.format(m.get("cntExport"))%>회</td>
+													<td><%=df.format(m.get("sumExport"))%>원</td>
+													<td><%=df.format(m.get("avgExport"))%>원</td>
 												</tr>
 										<%
 											}
