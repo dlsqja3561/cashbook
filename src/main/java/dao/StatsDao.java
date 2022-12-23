@@ -128,7 +128,7 @@ public class StatsDao {
 					+ "					, cs.member_id memberId\r\n"
 					+ "			FROM cash cs INNER JOIN category cg"
 					+ "			ON cs.category_no = cg.category_no) t) t2"
-					+ " WHERE t2.memberId = 'goodee' AND YEAR(t2.cashDate) = 2022"
+					+ " WHERE t2.memberId = ? AND YEAR(t2.cashDate) = ?"
 					+ " GROUP BY MONTH(t2.cashDate)"
 					+ " ORDER BY MONTH(t2.cashDate) ASC";
 		try {

@@ -17,12 +17,23 @@
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		String memberId = loginMember.getMemberId();
 	
+	// 년도
+	int year = 2022;
+	if(request.getParameter("year") != null) {
+		year = Integer.parseInt(request.getParameter("year"));
+	}
+		
 	// Model 호출
 	StatsDao statsDao = new StatsDao();
-	ArrayList<HashMap<String, Object>> list = statsDao.selectSumAvgByYear(memberId);
+	ArrayList<HashMap<String, Object>> list = statsDao.selectSumAvgByMonth(memberId, year);
 
 	// 숫자 콤마 포맷
 	DecimalFormat df = new DecimalFormat("###,###");
+	
+	// 최소/최대 년도
+	HashMap<String, Object> map = statsDao.selectMaxMinYear(memberId);
+	int maxYear = (Integer)map.get("maxYear");
+	int minYear = (Integer)map.get("minYear");
 	
 	// View
 %>
@@ -66,13 +77,13 @@
 						</a>
 					</li>
 					
-					<li class="sidebar-item active">
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/statsListYear.jsp">
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">년도별 수입/지출 통계</span>
 						</a>
 					</li>
 					
-					<li class="sidebar-item">
+					<li class="sidebar-item active">
 						<a class="sidebar-link" href="<%=request.getContextPath()%>/cash/statsListMonth.jsp">
 							<i class="align-middle" data-feather="#"></i> <span class="align-middle">월별 수입/지출 통계</span>
 						</a>
@@ -249,7 +260,7 @@
 
 			<main class="content">
 				<div class="container-fluid p-5">
-					<h1 class="h3 mb-3"><strong>년도별 수입/지출 합계</strong></h1>
+					<h1 class="h3 mb-3"><strong>월별 수입/지출 합계</strong></h1>
 					<div class="row">
 						<div class="col-12 col-lg-10 col-xxl-7 d-flex">
 							<div class="card flex-fill">
@@ -259,10 +270,26 @@
 									</div>
 								</div>
 								<div>
-									<!-- 년도별 수입/지출 리스트 -->
+									<!-- 년도 페이징 -->
+									<%
+										if(year > minYear) {
+									%>
+											<a href="<%=request.getContextPath()%>/cash/statsListMonth.jsp?year=<%=year-1%>">이전</a>
+									<%
+										}
+									%>
+										<span><%=year%>년</span>
+									<%
+										if(year < maxYear) {
+									%>
+											<a href="<%=request.getContextPath()%>/cash/statsListMonth.jsp?year=<%=year+1%>">다음</a>
+									<%
+										}
+									%>
+									<!-- 월별 수입/지출 리스트 -->
 									<table class="table table-hover my-0 ">
 										<tr class="h5 text-center">
-											<th>년도</th>
+											<th>월</th>
 											<th>수입횟수</th>
 											<th>수입합계</th>
 											<th>수입평균</th>
@@ -274,9 +301,7 @@
 											for(HashMap<String, Object> m : list) {
 										%>
 												<tr class="text-center">
-													<td>
-														<a href="<%=request.getContextPath()%>/cash/statsListMonth.jsp?year=<%=m.get("year")%>"><%=m.get("year")%>년</a>
-													</td>
+													<td><%=m.get("month")%>월</td>
 													<td><%=df.format(m.get("cntImport"))%>회</td>
 													<td><%=df.format(m.get("sumImport"))%>원</td>
 													<td><%=df.format(m.get("avgImport"))%>원</td>
