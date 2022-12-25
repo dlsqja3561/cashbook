@@ -285,7 +285,7 @@
 													<%
 														if(m.get("commentMemo") == null) {
 													%>
-															<span class="text-warning">X답변X</span>
+															<span class="text-warning">답변이 등록되지 않았습니다</span>
 													<%
 														} else {
 													%>
@@ -298,7 +298,7 @@
 													<%
 														if(m.get("commentCreatedate") == null) {
 													%>
-															<span class="text-warning">X답변X</span>
+															<span class="text-warning">답변이 등록되지 않았습니다</span>
 													<%
 														} else {
 													%>
@@ -360,34 +360,9 @@
 				</div>
 			</main>
 				
-			<!-- footer -->
-			<footer class="footer">
-				<div class="container-fluid">
-					<div class="row text-muted">
-						<div class="col-6 text-start">
-							<p class="mb-0">
-								<a class="text-muted" href="#" target="_blank"><strong>IBCashBook</strong></a> - <a class="text-muted" href="#" target="_blank"><strong>Copyright</strong></a>								&copy;
-							</p>
-						</div>
-						<div class="col-6 text-end">
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="text-muted" href="<%=request.getContextPath()%>/help/helpList.jsp" target="_blank">Support</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="<%=request.getContextPath()%>/help/helpList.jsp" target="_blank">Help Center</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#" target="_blank">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#" target="_blank">Terms</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
+			<!-- footer include -->
+			<jsp:include page="/inc/footer.jsp"></jsp:include>
+			
 		</div>
 	</div>
 
