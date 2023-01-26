@@ -32,7 +32,7 @@
 
 				<li class="sidebar-item">
 					<a class="sidebar-link" href="<%=request.getContextPath()%>/help/helpList.jsp">
-						<i class="align-middle far fa-calendar-alt"></i> <span class="align-middle">고객센터</span>
+						<i class="align-middle fas fa-headset"></i> <span class="align-middle">고객센터</span>
 					</a>
 				</li>
 
