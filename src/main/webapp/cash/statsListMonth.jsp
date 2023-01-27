@@ -18,7 +18,7 @@
 		String memberId = loginMember.getMemberId();
 	
 	// 년도
-	int year = 2022;
+	int year = 2023;
 	if(request.getParameter("year") != null) {
 		year = Integer.parseInt(request.getParameter("year"));
 	}
@@ -78,7 +78,7 @@
 										<span>통계 현황</span>
 									</div>
 								</div>
-								<div>
+								<div class="text-center">
 									<!-- 년도 페이징 -->
 									<%
 										if(year > minYear) {
@@ -87,7 +87,7 @@
 									<%
 										}
 									%>
-										<span><%=year%>년</span>
+										<strong><%=year%>년</strong>
 									<%
 										if(year < maxYear) {
 									%>

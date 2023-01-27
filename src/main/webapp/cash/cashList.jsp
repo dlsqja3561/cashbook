@@ -2,6 +2,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="dao.*"%>
 <%@ page import="vo.*"%>
+<%@ page import="java.text.*" %>
 <%
 	//한글처리 utf-8 인코딩
 	request.setCharacterEncoding("utf-8");
@@ -68,6 +69,8 @@
 	CashDao cashDao = new CashDao();
 	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(loginMember.getMemberId(), year, month+1);
 
+	// 숫자 콤마 포맷
+	DecimalFormat df = new DecimalFormat("###,###");
 
 	// View : 달력출력 + 일별 cash 목록
 %>
@@ -107,11 +110,11 @@
 
 					
 					<h1 class="text-center h3">
-						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>"><i class='far fa-caret-square-left' style='font-size:24px'></i></a>
+						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>"><i class='far fa-caret-square-left' style='font-size:24px'></i><</a>
 						
 						<span><%=year%>년 <%=month+1%>월</span>
 						
-						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>"><i class='far fa-caret-square-right' style='font-size:24px'></i></a>
+						<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>">><i class='far fa-caret-square-right' style='font-size:24px'></i></a>
 					</h1>
 
 
@@ -192,7 +195,7 @@
 																	}
 									%>
 																	<span class="text-dark"><%=(String)(m.get("categoryName"))%></span>
-																	<span class="text-dark"><%=(Long)(m.get("cashPrice"))%>원</span>
+																	<span class="text-dark"><%=df.format((Long)(m.get("cashPrice")))%>원</span>
 																	<br>
 																</a>
 																

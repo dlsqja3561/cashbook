@@ -69,7 +69,7 @@
 				<div class="container-fluid p-5">
 					<h1 class="h3 mb-3"><strong>수입/지출 내역입력</strong></h1>
 					<div class="row">
-						<div class="col-12 col-lg-10 col-xxl-5 d-flex">
+						<div class="col-8 col-lg-8 col-xxl-6 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
 									<h5 class="card-title mb-0">Insert Category</h5>
@@ -138,7 +138,7 @@
 				<div class="container-fluid p-5">
 					<h1 class="h3 mb-3"><strong>수입/지출 내역확인</strong></h1>
 					<div class="row">
-						<div class="col-12 col-lg-10 col-xxl-10 d-flex">
+						<div class="col-8 col-lg-8 col-xxl-10 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
 									<h5 class="card-title mb-0"><%=year%>-<%=month%>-<%=date%></h5>

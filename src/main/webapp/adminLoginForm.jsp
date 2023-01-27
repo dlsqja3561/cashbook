@@ -81,15 +81,15 @@
 						</table>
 						<!-- 페이징 -->
 						<div class="text-center pt-2">
-							<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1"><i class='fas fa-angle-double-left'><<</i>&nbsp;</a>
+							<a href="<%=request.getContextPath()%>/adminLoginForm.jsp?currentPage=1"><i class='fas fa-angle-double-left'><<</i>&nbsp;</a>
 						<%
 							if(currentPage > 1) {
 						%>
-								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage-1%>"><i class='fas fa-angle-left'><</i></a>
+								<a href="<%=request.getContextPath()%>/adminLoginForm.jsp?currentPage=<%=currentPage-1%>"><i class='fas fa-angle-left'><</i></a>
 						<%	// 1페이지일때 이전버튼 클릭시 
 							} else {
 						%>
-								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=1"><i class='fas fa-angle-left'><</i></a>
+								<a href="<%=request.getContextPath()%>/adminLoginForm.jsp?currentPage=1"><i class='fas fa-angle-left'></i><</a>
 						<%
 							}
 						%>
@@ -97,15 +97,15 @@
 						<%
 							if(currentPage < lastPage) {
 						%>
-								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=currentPage+1%>"><i class='fas fa-angle-right'>></i></a>
+								<a href="<%=request.getContextPath()%>/adminLoginForm.jsp?currentPage=<%=currentPage+1%>"><i class='fas fa-angle-right'>></i></a>
 						<%	// 마지막페이지 일때 다음버튼 클릭시
 							} else {
 						%>
-								<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>"><i class='fas fa-angle-right'>></i></a>
+								<a href="<%=request.getContextPath()%>/adminLoginForm.jsp?currentPage=<%=lastPage%>"><i class='fas fa-angle-right'>></i></a>
 						<%
 							}
 						%>
-							<a href="<%=request.getContextPath()%>/loginForm.jsp?currentPage=<%=lastPage%>">&nbsp;<i class='fas fa-angle-double-right'>>></i></a>
+							<a href="<%=request.getContextPath()%>/adminLoginForm.jsp?currentPage=<%=lastPage%>">&nbsp;<i class='fas fa-angle-double-right'>>></i></a>
 						</div>
 					</div>
 				</div>
@@ -138,7 +138,7 @@
 									<form id="form" action="<%=request.getContextPath()%>/loginAction.jsp" method="post">
 										<div class="mb-3">
 											<label class="form-label">ID</label>
-											<input class="form-control form-control-lg" type="text" id="memberId" name="memberId" value="goodee">
+											<input class="form-control form-control-lg" type="text" id="memberId" name="memberId" value="admin">
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
@@ -158,7 +158,7 @@
 										<div class="text-center mt-3">
 											<button type="button" id="btn" class="btn btn-primary">로그인</button>
 											<a href="<%=request.getContextPath()%>/insertMemberForm.jsp" class="btn btn-primary">회원가입</a>
-											<a href="<%=request.getContextPath()%>/adminLoginForm.jsp" class="btn btn-primary">관리자로그인</a>
+											<a href="<%=request.getContextPath()%>/loginForm.jsp" class="btn btn-primary">회원로그인</a>
 										</div>
 									</form>
 								</div>

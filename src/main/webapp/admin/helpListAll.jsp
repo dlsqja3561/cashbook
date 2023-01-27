@@ -50,6 +50,11 @@
 	<link href="../resorces/css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<style>
+		table {
+			text-align: center;
+		}
+	</style>
 </head>
 
 <body>
@@ -159,7 +164,7 @@
 				<div class="container-fluid p-5">
 					<h1 class="h3 mb-3"><strong>멤버 문의 관리</strong> </h1>
 					<div class="row">
-						<div class="col-12 col-lg-10 col-xxl-7 d-flex">
+						<div class="col-12 col-lg-10 col-xxl-10 d-flex">
 							<div class="card flex-fill">
 								<div class="card-header">
 									<h5 class="card-title mb-0">Help List</h5>
@@ -228,15 +233,15 @@
 								</table>
 								<!-- 페이징 -->
 								<div class="text-center">
-									<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=1"><i class='fas fa-angle-double-left'></i>&nbsp;</a>
+									<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=1"><i class='fas fa-angle-double-left'><<</i>&nbsp;</a>
 								<%
 									if(currentPage > 1) {
 								%>
-										<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=<%=currentPage-1%>"><i class='fas fa-angle-left'></i></a>
+										<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=<%=currentPage-1%>"><i class='fas fa-angle-left'><</i></a>
 								<%	// 1페이지일때 이전버튼 클릭시 
 									} else {
 								%>
-										<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=1"><i class='fas fa-angle-left'></i></a>
+										<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=1"><i class='fas fa-angle-left'><</i></a>
 								<%
 									}
 								%>
@@ -244,15 +249,15 @@
 								<%
 									if(currentPage < lastPage) {
 								%>
-										<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=<%=currentPage+1%>"><i class='fas fa-angle-right'></i></a>
+										<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=<%=currentPage+1%>"><i class='fas fa-angle-right'>></i></a>
 								<%	// 마지막페이지 일때 다음버튼 클릭시
 									} else {
 								%>
-										<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=<%=lastPage%>"><i class='fas fa-angle-right'></i></a>
+										<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=<%=lastPage%>"><i class='fas fa-angle-right'>></i></a>
 								<%
 									}
 								%>
-									<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=<%=lastPage%>">&nbsp;<i class='fas fa-angle-double-right'></i></a>
+									<a href="<%=request.getContextPath()%>/admin/helpListAll.jsp?currentPage=<%=lastPage%>">&nbsp;<i class='fas fa-angle-double-right'>>></i></a>
 								</div>
 							</div>
 						</div>
